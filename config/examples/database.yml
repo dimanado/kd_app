@@ -1,16 +1,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: kd_development
   pool: 5
-  username: 
-  password: 
+  username:
+  password:
 
 development:
   <<: *default
+  database: kd_development
 
 test:
   <<: *default
+  database: kd_test
 
 production:
   <<: *default
+  database: kd_production

@@ -7,7 +7,7 @@ end
 
 
 gem 'rails', '5.1.4'
-gem 'sqlite3'
+gem 'pg'
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

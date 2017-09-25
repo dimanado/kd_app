@@ -21,3 +21,6 @@
 
 # Ignore database.yml config
 config/database.yml
+
+# Ignore code editor files
+.idea/*

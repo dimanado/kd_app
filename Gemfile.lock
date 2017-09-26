@@ -53,9 +53,6 @@ GEM
     devise-jwt (0.4.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.1.2)
-    devise_token_auth (0.1.42)
-      devise (> 3.5.2, <= 4.3)
-      rails (< 6)
     dry-auto_inject (0.4.4)
       dry-container (>= 0.3.4)
     dry-configurable (0.7.0)
@@ -160,7 +157,6 @@ DEPENDENCIES
   byebug
   devise
   devise-jwt
-  devise_token_auth
   foreman (~> 0.82.0)
   listen (>= 3.0.5, < 3.2)
   pg

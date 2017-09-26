@@ -7,7 +7,6 @@ end
 
 gem 'devise'
 gem 'devise-jwt'
-gem 'devise_token_auth'
 gem 'rails', '5.1.4'
 gem 'pg'
 gem 'puma', '~> 3.7'

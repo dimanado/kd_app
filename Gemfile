@@ -9,9 +9,9 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'devise_token_auth'
 gem 'rails', '5.1.4'
-gem 'sqlite3'
 gem 'pg'
 gem 'puma', '~> 3.7'
+gem 'foreman', '~> 0.82.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

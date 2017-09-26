@@ -1,4 +1,5 @@
 Use rvm with ruby version 2.4.2 and rails version 5.1.4
+<br>
 You’ll need to have Node >= 6 on your machine
  ```sh
 rvm install 2.4.2

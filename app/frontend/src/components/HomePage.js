@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../images/logo.png';
 
-class Main extends Component {
+class HomePage extends Component {
   render() {
     return (
       <div className="App">
@@ -14,4 +14,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default HomePage;

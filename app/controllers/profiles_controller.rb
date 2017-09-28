@@ -21,9 +21,5 @@ class ProfilesController < ApplicationController
   def set_profile
     #Find by user id
     @profile = User.find(params[:id]).profile
-
-    unless @profile
-      @profile = Profile.create(user_id: params[:id])
-    end
   end
 end

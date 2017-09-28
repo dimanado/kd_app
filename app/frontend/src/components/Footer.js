@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Navbar } from 'react-bootstrap';
 
-class Header extends Component {
-  render() {
-    return (
-      <Navbar fixedBottom>
-      </Navbar>
-    );
-  }
+export default function Footer() {
+  return (
+    <Navbar fixedBottom>
+    </Navbar>
+  );
 }
-
-export default Header;

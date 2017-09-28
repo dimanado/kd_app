@@ -16,7 +16,7 @@ class SignUpPage extends Component {
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onChange = this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this);
   }
 
   onFormSubmit(e) {
@@ -48,13 +48,6 @@ class SignUpPage extends Component {
     this.setState({
       user
     });
-  }
-
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return "success";
-    else if (length > 5) return "warning";
-    else if (length > 0) return "error";
   }
 
   render() {

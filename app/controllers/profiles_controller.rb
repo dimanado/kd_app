@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
   end
 
   def set_profile
+    #Find by user id
     @profile = User.find(params[:id]).profile
 
     unless @profile

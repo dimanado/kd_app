@@ -3,9 +3,11 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :update]
 
   def show
+    authorize @profile
   end
 
   def update
+    authorize @profile
     if @profile.update(profile_params)
       render :show
     else

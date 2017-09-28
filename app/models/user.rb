@@ -26,10 +26,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
+  has_one :profile
+
+  after_save :init_profile
+
   def jwt_payload
     {
       user_id: id,
       email: email
     }
   end
+
+  private
+
+  def init_profile
+    Profile.create(user_id: id)
+  end
+
 end

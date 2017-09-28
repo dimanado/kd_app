@@ -26,7 +26,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   after_save :init_profile
 

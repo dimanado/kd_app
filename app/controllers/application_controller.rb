@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include Pundit
 
   rescue_from ActionController::ParameterMissing, with: :invalid_params
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 

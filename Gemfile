@@ -8,11 +8,12 @@ end
 gem 'annotate'
 gem 'devise'
 gem 'devise_token_auth'
-gem 'rails', '5.1.4'
-gem 'pg'
-gem 'puma', '~> 3.7'
 gem 'foreman', '~> 0.82.0'
 gem 'jbuilder'
+gem 'pg'
+gem 'puma', '~> 3.7'
+gem 'pundit'
+gem 'rails', '5.1.4'
 
 
 group :development, :test do

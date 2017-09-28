@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, path: :auth
-
-  resources :profiles, only: [:show, :update]
+  scope :api do
+    mount_devise_token_auth_for 'User', at: 'auth'
+    resources :profiles, only: [:show, :update]
+  end
 end

@@ -1,12 +1,4 @@
 Devise.setup do |config|
-  config.jwt do |jwt|
-    jwt.secret = Rails.application.secrets.devise_jwt_secret_key
-  end
-
-  config.warden do |manager|
-    manager.failure_app = CustomAuthFailure
-  end
-
   config.navigational_formats = [:json]
 
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'

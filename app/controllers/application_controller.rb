@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  include ActionController::MimeResponds
+  include DeviseTokenAuth::Concerns::SetUserByToken
 
   rescue_from ActionController::ParameterMissing, with: :invalid_params
   rescue_from ActiveRecord::RecordNotFound, with: :not_found

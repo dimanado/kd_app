@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col} from 'react-bootstrap';
+import Auth from 'Auth';
 import LoginForm from 'LoginForm';
 
 class LoginPage extends Component {
@@ -19,18 +21,16 @@ class LoginPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    const reqBody = {
-      user: {
-        ...this.state.user
-      }
-    }
-
-    fetch("auth/sign_in", {
+    fetch("api/auth/sign_in", {
       method: "post",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(reqBody)
+      body: JSON.stringify(this.state.user)
     })
-    .then((data) => {
+    .then(({data}) => {
+      const tokens = data;
+      Auth.authenticateUser(tokens);
+
+      this.context.router.replace('/');
       if (data.headers.get('Authorization')) {
         this.props.onUserSignUp(this.state.user);
       }
@@ -49,11 +49,17 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <LoginForm
-        onFormSubmit={this.onFormSubmit}
-        onChange={this.onChange}
-        user={this.state.user}
-      />
+      <Grid>
+        <Row>
+          <Col xs={12} md={4} mdOffset={4}>
+            <LoginForm
+              onFormSubmit={this.onFormSubmit}
+              onChange={this.onChange}
+              user={this.state.user}
+            />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col} from 'react-bootstrap';
 import toSnakeCase from 'toSnakeCase';
 import convertObjectKeys from 'convertObjectKeys';
+import Auth from 'Auth';
 import SignUpForm from 'SignUpForm';
 
 class SignUpPage extends Component {
@@ -22,21 +24,16 @@ class SignUpPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    const reqBody = {
-      user: {
-        ...convertObjectKeys(this.state.user, toSnakeCase)
-      }
-    }
-
-    fetch("auth", {
+    fetch("api/auth", {
       method: "post",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(reqBody)
+      body: JSON.stringify(convertObjectKeys(this.state.user, toSnakeCase))
     })
-    .then((data) => {
-      if (data.headers.get('Authorization')) {
-        this.props.onUserSignUp(this.state.user);
-      }
+    .then(({data}) => {
+      const tokens = data;
+      Auth.authenticateUser(tokens);
+
+      this.context.router.replace('/');
     })
   }
 
@@ -52,12 +49,18 @@ class SignUpPage extends Component {
 
   render() {
     return (
-      <SignUpForm
-        onFormSubmit={this.onFormSubmit}
-        onChange={this.onChange}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <Grid>
+        <Row>
+          <Col xs={12} md={4} mdOffset={4}>
+            <SignUpForm
+              onFormSubmit={this.onFormSubmit}
+              onChange={this.onChange}
+              errors={this.state.errors}
+              user={this.state.user}
+            />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

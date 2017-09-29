@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Alert } from 'react-bootstrap';
-import { logoutUser } from 'api';
+import MDSpinner from "react-md-spinner";
+import { Grid, Row, Col } from 'react-bootstrap';
+import Api from 'Api';
 import Auth from 'Auth';
+import User from 'User';
 
 class Logout extends Component {
   componentWillMount() {
-    logoutUser(Auth.getUserTokens())
+    Api.logoutUser(Auth.getUserTokens())
     .then(() => {
       Auth.removeUserTokens();
+      User.removeUserInfo();
+
       this.props.history.push('/');
     })
     .catch((error) => {
@@ -18,9 +22,13 @@ class Logout extends Component {
 
   render() {
     return (
-      <Alert bsStyle="info">
-        Logging out...
-      </Alert>
+      <Grid>
+        <Row>
+          <Col xs={12} className="text-center">
+            <MDSpinner size={70} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

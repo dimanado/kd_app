@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { loginUser } from 'api';
+import Api from 'Api';
 import Auth from 'Auth';
+import User from 'User';
 import LoginForm from 'LoginForm';
 
 class LoginPage extends Component {
@@ -23,9 +24,10 @@ class LoginPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    loginUser(this.state.user)
+    Api.loginUser(this.state.user)
     .then(({data, headers}) => {
       Auth.setUserTokens(headers);
+      User.setUserInfo(data.data);
 
       this.props.history.push("/");
     })

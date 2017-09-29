@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { signUpUser } from 'api';
+import Api from 'Api';
 import Auth from 'Auth';
+import User from 'User';
 import SignUpForm from 'SignUpForm';
 
 class SignUpPage extends Component {
@@ -24,9 +25,10 @@ class SignUpPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    signUpUser(this.state.user)
+    Api.signUpUser(this.state.user)
     .then(({data, headers}) => {
       Auth.setUserTokens(headers);
+      User.setUserInfo(data.data);
 
       this.props.history.push("/");
     })

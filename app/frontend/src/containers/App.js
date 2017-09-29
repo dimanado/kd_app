@@ -7,15 +7,10 @@ import 'App.css';
 
 class App extends Component {
   render() {
-    const routesList = routes.childRoutes.map((route, i) => {
-      return route.path === '/' ? <Route path={route.path} exact component={route.component} key={i} /> :
-                                  <Route path={route.path} component={route.component} key={i} />;
-    });
-
     return (
       <div>
         <Header />
-        {routesList}
+        { routes.map((route, i) => <Route {...route} key={i} />) }
         <Footer />
       </div>
     );

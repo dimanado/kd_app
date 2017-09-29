@@ -63,6 +63,9 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
+    jbuilder (2.7.0)
+      activesupport (>= 4.2.0)
+      multi_json (>= 1.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -78,12 +81,15 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    multi_json (1.12.2)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
     puma (3.10.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.3)
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
@@ -149,9 +155,11 @@ DEPENDENCIES
   devise
   devise_token_auth
   foreman (~> 0.82.0)
+  jbuilder
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 3.7)
+  pundit
   rails (= 5.1.4)
   spring
   spring-watcher-listen (~> 2.0.0)

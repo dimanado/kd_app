@@ -3,6 +3,7 @@ import HomePage from 'HomePage';
 import DashboardPage from 'DashboardPage';
 import LoginPage from 'LoginPage';
 import SignUpPage from 'SignUpPage';
+import ProfilePage from 'ProfilePage';
 import Auth from 'Auth';
 
 
@@ -28,6 +29,11 @@ const routes = {
     {
       path: '/signup',
       component: SignUpPage
+    },
+
+    {
+      path: '/profile',
+      component: ProfilePage
     },
 
     {

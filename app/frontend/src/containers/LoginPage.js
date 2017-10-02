@@ -15,7 +15,7 @@ class LoginPage extends Component {
         email: "",
         password: ""
       }
-    }
+    };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -29,7 +29,7 @@ class LoginPage extends Component {
       Auth.setUserTokens(headers);
       User.setUserInfo(data.data);
 
-      this.props.history.push("/");
+      this.props.history.push("/profile");
     })
     .catch((error) => {
       console.log(error);

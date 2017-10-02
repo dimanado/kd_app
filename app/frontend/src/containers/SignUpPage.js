@@ -30,7 +30,7 @@ class SignUpPage extends Component {
       Auth.setUserTokens(headers);
       User.setUserInfo(data.data);
 
-      this.props.history.push("/");
+      this.props.history.push("/profile");
     })
     .catch((error) => {
       console.log(error);

@@ -1,14 +1,13 @@
 class ProfilesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_profile, only: [:show, :update]
 
   def show
-    # authorize @profile
+    authorize @profile
   end
 
   def update
-    # authorize @profile
-    binding.pry
+    authorize @profile
     if @profile.update(profile_params)
       render :show
     else
@@ -23,7 +22,6 @@ class ProfilesController < ApplicationController
   end
 
   def set_profile
-    #Find by user id
-    @profile = User.find(params[:id]).profile
+    @profile = current_user.profile
   end
 end

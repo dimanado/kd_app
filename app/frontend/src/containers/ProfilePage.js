@@ -25,34 +25,37 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     const that = this;
-    axios({ method: 'get', url: 'api/profiles/' + this.state.user.id,
+    axios({ method: 'get',
+      url: `api/profiles/${this.state.user.id}`,
       headers: Auth.getUserTokens()
     })
-      .then(function (response) {
-        const profile = {
-          firstName: response.data.first_name,
-          lastName: response.data.last_name
-        };
-        that.setState({profile, spinner: false});
-      })
-      .catch(function (error) {
-      });
+    .then((response) => {
+      const profile = {
+        firstName: response.data.first_name,
+        lastName: response.data.last_name
+      };
+      that.setState({profile, spinner: false});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   onFormSubmit(e) {
     e.preventDefault();
 
-    axios({ method: 'put', url: 'api/profiles/' + this.state.user.id,
+    axios({ method: 'put',
+            url: `api/profiles/${this.state.user.id}`,
             headers: Auth.getUserTokens(),
             data: { profile: {first_name: this.state.profile.firstName,
                     last_name: this.state.profile.lastName }}
     })
-      .then(function (response) {
-        alert('Data updated.');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    .then((response) => {
+      alert('Data updated.');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   onChange(e) {
@@ -66,20 +69,14 @@ class ProfilePage extends Component {
   }
 
   render() {
-    if(this.state.spinner)
-      return(
-        <Grid>
-          <Row>
+    return(
+      <Grid>
+        <Row>
+          { this.state.spinner ? (
             <Col xs={12} md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
-          </Row>
-        </Grid>
-      );
-    else
-      return (
-        <Grid>
-          <Row>
+          ) : (
             <Col xs={12} md={4} mdOffset={1}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
@@ -88,9 +85,10 @@ class ProfilePage extends Component {
                 user={this.state.profile}
               />
             </Col>
-          </Row>
-        </Grid>
-      );
+          )}
+        </Row>
+      </Grid>
+    );
   }
 }
 

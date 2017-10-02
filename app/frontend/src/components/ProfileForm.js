@@ -27,7 +27,7 @@ const ProfileForm = ({
     />
 
     <Button type="submit" onClick={onFormSubmit}>
-    Save
+      Save
     </Button>
   </Form>
 );

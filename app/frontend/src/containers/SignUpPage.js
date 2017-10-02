@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col} from 'react-bootstrap';
-import toSnakeCase from 'toSnakeCase';
-import convertObjectKeys from 'convertObjectKeys';
+import { withRouter } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
+import Api from 'Api';
 import Auth from 'Auth';
+import User from 'User';
 import SignUpForm from 'SignUpForm';
 
 class SignUpPage extends Component {
@@ -24,17 +25,16 @@ class SignUpPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    fetch("api/auth", {
-      method: "post",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(convertObjectKeys(this.state.user, toSnakeCase))
-    })
-    .then(({data}) => {
-      const tokens = data;
-      Auth.authenticateUser(tokens);
+    Api.signUpUser(this.state.user)
+    .then(({data, headers}) => {
+      Auth.setUserTokens(headers);
+      User.setUserInfo(data.data);
 
-      this.context.router.replace('/');
+      this.props.history.push("/");
     })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   onChange(e) {
@@ -65,4 +65,4 @@ class SignUpPage extends Component {
   }
 }
 
-export default SignUpPage;
+export default withRouter(SignUpPage);

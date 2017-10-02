@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col} from 'react-bootstrap';
-import LoginForm from 'LoginForm';
+import User from 'User';
 
 class DashboardPage extends Component {
-  constructor(props) {
-    super(props);
+  componentWillMount() {
+    this.setState({
+      user: User.getUserInfo()
+    });
   }
 
   render() {
@@ -12,7 +14,7 @@ class DashboardPage extends Component {
       <Grid>
         <Row>
           <Col xs={12}>
-            Hello,
+            Hello, {this.state.user.email}
           </Col>
         </Row>
       </Grid>

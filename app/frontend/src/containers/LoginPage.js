@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col} from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
+import Api from 'Api';
 import Auth from 'Auth';
+import User from 'User';
 import LoginForm from 'LoginForm';
 
 class LoginPage extends Component {
@@ -21,20 +24,16 @@ class LoginPage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    fetch("api/auth/sign_in", {
-      method: "post",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(this.state.user)
-    })
-    .then(({data}) => {
-      const tokens = data;
-      Auth.authenticateUser(tokens);
+    Api.loginUser(this.state.user)
+    .then(({data, headers}) => {
+      Auth.setUserTokens(headers);
+      User.setUserInfo(data.data);
 
-      this.context.router.replace('/');
-      if (data.headers.get('Authorization')) {
-        this.props.onUserSignUp(this.state.user);
-      }
+      this.props.history.push("/");
     })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   onChange(e) {
@@ -64,4 +63,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

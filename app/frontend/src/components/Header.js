@@ -14,7 +14,8 @@ export default function Header() {
       </Navbar.Header>
       {Auth.isUserLoggedIn() ? (
         <Nav pullRight>
-          <NavItem eventKey={1} href="/logout">Log Out</NavItem>
+          <NavItem eventKey={1} href="/profile">Profile</NavItem>
+          <NavItem eventKey={2} href="/logout">Log Out</NavItem>
         </Nav>
       ) : (
         <Nav pullRight>

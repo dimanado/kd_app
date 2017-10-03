@@ -15,7 +15,7 @@ class LoginPage extends Component {
         email: "",
         password: ""
       }
-    }
+    };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onChange = this.onChange.bind(this);

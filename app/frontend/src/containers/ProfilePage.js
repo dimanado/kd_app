@@ -5,6 +5,7 @@ import axios from 'axios';
 import Auth from 'Auth';
 import User from 'User';
 import MDSpinner from "react-md-spinner";
+import Api from 'Api';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -18,23 +19,16 @@ class ProfilePage extends Component {
       user: User.getUserInfo(),
       spinner: true
     };
-
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    const that = this;
-    axios({ method: 'get',
-      url: `api/profiles/${this.state.user.id}`,
-      headers: Auth.getUserTokens()
-    })
-    .then((response) => {
+    Api.profileShow(this.state.user.id, Auth.getUserTokens())
+    .then(({data}) => {
       const profile = {
-        firstName: response.data.first_name,
-        lastName: response.data.last_name
+        firstName: data.first_name,
+        lastName: data.last_name
       };
-      that.setState({profile, spinner: false});
+      this.setState({profile, spinner: false});
     })
     .catch((error) => {
       console.log(error);
@@ -44,12 +38,7 @@ class ProfilePage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    axios({ method: 'put',
-            url: `api/profiles/${this.state.user.id}`,
-            headers: Auth.getUserTokens(),
-            data: { profile: {first_name: this.state.profile.firstName,
-                    last_name: this.state.profile.lastName }}
-    })
+    Api.profileUpdate(this.state.user.id, Auth.getUserTokens(), this.state.profile)
     .then((response) => {
       alert('Data updated.');
     })
@@ -80,8 +69,8 @@ class ProfilePage extends Component {
             <Col xs={12} md={4} mdOffset={1}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
-                onFormSubmit={this.onFormSubmit}
-                onChange={this.onChange}
+                onFormSubmit={this.onFormSubmit.bind(this)}
+                onChange={this.onChange.bind(this)}
                 user={this.state.profile}
               />
             </Col>

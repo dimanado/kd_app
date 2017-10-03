@@ -16,4 +16,21 @@ export default class Api {
       headers: userTokens
     });
   }
+
+  static profileShow(id, userToken) {
+    return axios({
+      method: 'get',
+      url: `api/profiles/${id}`,
+      headers: userToken
+    });
+  }
+
+  static profileUpdate(id, userToken, profile) {
+    return axios({
+      method: 'put',
+      url: `api/profiles/${id}`,
+      headers: userToken,
+      data: { profile: convertObjectKeys(profile, toSnakeCase)}
+    });
+  }
 }

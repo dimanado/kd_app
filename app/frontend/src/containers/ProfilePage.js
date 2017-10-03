@@ -38,7 +38,7 @@ class ProfilePage extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    Api.profileUpdate(this.state.user.id, Auth.getUserTokens(), this.state.profile)
+    Api.profileUpdate(this.state.user.id, this.state.profile, Auth.getUserTokens())
     .then((response) => {
       alert('Data updated.');
     })

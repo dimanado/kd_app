@@ -17,20 +17,20 @@ export default class Api {
     });
   }
 
-  static profileShow(id, userToken) {
+  static profileShow(id, userTokens) {
     return axios({
       method: 'get',
       url: `api/profiles/${id}`,
-      headers: userToken
+      headers: userTokens
     });
   }
 
-  static profileUpdate(id, userToken, profile) {
+  static profileUpdate(id, profile, userTokens) {
     return axios({
       method: 'put',
       url: `api/profiles/${id}`,
-      headers: userToken,
-      data: { profile: convertObjectKeys(profile, toSnakeCase)}
+      headers: userTokens,
+      data: { profile: convertObjectKeys(profile, toSnakeCase) }
     });
   }
 }

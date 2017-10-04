@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col} from 'react-bootstrap';
+import MDSpinner from "react-md-spinner";
 import ProfileForm from 'ProfileForm';
-import axios from 'axios';
 import Auth from 'Auth';
 import User from 'User';
-import MDSpinner from "react-md-spinner";
 import Api from 'Api';
 
 class ProfilePage extends Component {

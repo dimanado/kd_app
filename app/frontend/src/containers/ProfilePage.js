@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col} from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import MDSpinner from "react-md-spinner";
 import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
+
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -13,7 +15,8 @@ class ProfilePage extends Component {
     this.state = {
       profile: {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        user_id: 0
       },
       user: User.getUserInfo(),
       spinner: true
@@ -25,7 +28,8 @@ class ProfilePage extends Component {
     .then(({data}) => {
       const profile = {
         firstName: data.first_name,
-        lastName: data.last_name
+        lastName: data.last_name,
+        user_id: this.state.user.id
       };
       this.setState({profile, spinner: false});
     })
@@ -34,26 +38,8 @@ class ProfilePage extends Component {
     });
   }
 
-  onFormSubmit(e) {
-    e.preventDefault();
-
-    Api.profileUpdate(this.state.user.id, this.state.profile, Auth.getUserTokens())
-    .then((response) => {
-      alert('Data updated.');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-
-  onChange(e) {
-    const field = e.target.name;
-    const profile = this.state.profile;
-    profile[field] = e.target.value;
-
-    this.setState({
-      profile
-    });
+  handleSubmit = () => {
+    this.props.history.push("/");
   }
 
   render() {
@@ -68,10 +54,8 @@ class ProfilePage extends Component {
             <Col xs={12} md={4} mdOffset={1}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
-                onFormSubmit={this.onFormSubmit.bind(this)}
-                onChange={this.onChange.bind(this)}
-                user={this.state.profile}
-              />
+                handleSubmit={this.handleSubmit}
+                profile={this.state.profile}/>
             </Col>
           )}
         </Row>
@@ -80,4 +64,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default ProfilePage;
+export default withRouter(ProfilePage);

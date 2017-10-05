@@ -14,7 +14,7 @@ const ProfileForm = withFormik({
     lastName: Yup.string().matches(/^[a-zA-Z]*$/, 'Last name should only have letters')
   }),
 
-  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
+  handleSubmit: (values, { props, setSubmitting }) => {
     Api.profileUpdate(props.profile.userId, values, Auth.getUserTokens())
     .then((response) => {
       alert('Data updated.');

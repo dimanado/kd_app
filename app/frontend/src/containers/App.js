@@ -10,7 +10,11 @@ class App extends Component {
     return (
       <div>
         <Header />
+
         { routes.map((route, i) => <Route {...route} key={i} />) }
+
+        <hr />
+
         <Footer />
       </div>
     );

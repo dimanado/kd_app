@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col} from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';
 import MDSpinner from "react-md-spinner";
 import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
@@ -28,7 +27,7 @@ class ProfilePage extends Component {
       const profile = {
         firstName: data.first_name,
         lastName: data.last_name,
-        user_id: this.state.user.id
+        userId: this.state.user.id
       };
       this.setState({profile, spinner: false});
     })
@@ -58,4 +57,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default withRouter(ProfilePage);
+export default ProfilePage;

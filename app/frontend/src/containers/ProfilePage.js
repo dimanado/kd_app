@@ -16,7 +16,7 @@ class ProfilePage extends Component {
       profile: {
         firstName: "",
         lastName: "",
-        user_id: 0
+        userId: 0
       },
       user: User.getUserInfo(),
       spinner: true
@@ -38,10 +38,6 @@ class ProfilePage extends Component {
     });
   }
 
-  handleSubmit = () => {
-    this.props.history.push("/");
-  }
-
   render() {
     return(
       <Grid>
@@ -54,7 +50,6 @@ class ProfilePage extends Component {
             <Col xs={12} md={4} mdOffset={1}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
-                handleSubmit={this.handleSubmit}
                 profile={this.state.profile}/>
             </Col>
           )}

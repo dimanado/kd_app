@@ -7,18 +7,17 @@ import Api from 'Api';
 import Auth from 'Auth';
 
 const ProfileForm = withFormik({
-  mapPropsToValues: (props) => ({ firstName: props.profile.firstName, lastName: props.profile.lastName }),
+  mapPropsToValues: (props) => ({ ...props.profile }),
 
   validationSchema: Yup.object().shape({
-    firstName: Yup.string().matches(/^[a-zA-Z]*$/, 'First name should have only letters'),
-    lastName: Yup.string().matches(/^[a-zA-Z]*$/, 'Last name should have only letters')
+    firstName: Yup.string().matches(/^[a-zA-Z]*$/, 'First name should only have letters'),
+    lastName: Yup.string().matches(/^[a-zA-Z]*$/, 'Last name should only have letters')
   }),
 
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    Api.profileUpdate(props.profile.user_id, values, Auth.getUserTokens())
+    Api.profileUpdate(props.profile.userId, values, Auth.getUserTokens())
     .then((response) => {
       alert('Data updated.');
-      props.handleSubmit();
     })
     .catch((error) => {
       console.log(error);

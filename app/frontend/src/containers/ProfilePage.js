@@ -13,7 +13,8 @@ class ProfilePage extends Component {
     this.state = {
       profile: {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        userId: 0
       },
       user: User.getUserInfo(),
       spinner: true
@@ -25,34 +26,13 @@ class ProfilePage extends Component {
     .then(({data}) => {
       const profile = {
         firstName: data.first_name,
-        lastName: data.last_name
+        lastName: data.last_name,
+        userId: this.state.user.id
       };
       this.setState({profile, spinner: false});
     })
     .catch((error) => {
       console.log(error);
-    });
-  }
-
-  onFormSubmit(e) {
-    e.preventDefault();
-
-    Api.profileUpdate(this.state.user.id, this.state.profile, Auth.getUserTokens())
-    .then((response) => {
-      alert('Data updated.');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-
-  onChange(e) {
-    const field = e.target.name;
-    const profile = this.state.profile;
-    profile[field] = e.target.value;
-
-    this.setState({
-      profile
     });
   }
 
@@ -68,10 +48,7 @@ class ProfilePage extends Component {
             <Col xs={12} md={4} mdOffset={1}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
-                onFormSubmit={this.onFormSubmit.bind(this)}
-                onChange={this.onChange.bind(this)}
-                user={this.state.profile}
-              />
+                profile={this.state.profile}/>
             </Col>
           )}
         </Row>

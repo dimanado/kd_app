@@ -9,13 +9,9 @@
 #
 
 class Company < ApplicationRecord
-  has_one :ownership_type
-  has_one :company_type
-  has_many: :users, through: :company_representatives
+  belongs_to :ownership_type
+  belongs_to :company_type
 
-  validate :check_user, on: [:create, :update, :destroy]
-
-  def check_user
-    self.users.any? { |user| user.id == current_user.id }
-  end
+  has_many :company_representatives, dependent: :destroy
+  has_many :users, through: :company_representatives
 end

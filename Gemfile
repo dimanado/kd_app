@@ -14,6 +14,7 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'pundit'
 gem 'rails', '5.1.4'
+gem 'carrierwave-base64'
 
 
 group :development, :test do

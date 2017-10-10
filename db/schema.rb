@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20170928111139) do
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "sex"
+    t.string "avatar"
+    t.integer "age"
     t.integer "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

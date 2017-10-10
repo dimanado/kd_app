@@ -1,15 +1,18 @@
 import React from 'react';
-import HomePage from 'HomePage';
+import Home from 'Home';
 import DashboardPage from 'DashboardPage';
 import LoginPage from 'LoginPage';
 import SignUpPage from 'SignUpPage';
 import ProfilePage from 'ProfilePage';
 import Logout from 'Logout';
 import About from 'About';
-import IssueContent from 'IssueContent';
+import Collegium from 'Collegium';
+import Board from 'Board';
 import ForAuthors from 'ForAuthors';
+import EventsAndNews from 'EventsAndNews';
+import IssueContent from 'IssueContent';
 import Policy from 'Policy';
-import EditorialOffice from 'EditorialOffice';
+import RedactorPage from 'RedactorPage';
 import Auth from 'Auth';
 
 
@@ -21,7 +24,7 @@ const routes = [
       Auth.isUserLoggedIn() ? (
         <DashboardPage />
       ) : (
-        <HomePage />
+        <Home />
       )
     )
   },
@@ -52,8 +55,13 @@ const routes = [
   },
 
   {
-    path: '/issue-content',
-    component: IssueContent
+    path: '/collegium',
+    component: Collegium
+  },
+
+  {
+    path: '/board',
+    component: Board
   },
 
   {
@@ -62,14 +70,24 @@ const routes = [
   },
 
   {
+    path: '/events',
+    component: EventsAndNews
+  },
+
+  {
+    path: '/issue-content',
+    component: IssueContent
+  },
+
+  {
     path: '/policy',
     component: Policy
   },
 
   {
-    path: '/editorial-office',
-    component: EditorialOffice
-  },
+    path: '/redactor',
+    component: RedactorPage
+  }
 ];
 
 export default routes;

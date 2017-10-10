@@ -1,0 +1,11 @@
+.SearchForm {
+
+}
+
+.SearchForm .form-group {
+  flex-grow: 1
+}
+
+.SearchForm .form-control {
+  width: 100%;
+}

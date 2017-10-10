@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
   end
 
   def check_user
-    @company.users.any? { |user| user.id == current_user.id }
+    raise Pundit::NotAuthorizedError unless @company.users.any? { |user| user.id == current_user.id }
   end
 
   def company_params

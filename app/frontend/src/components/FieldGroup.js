@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 
-export default function FieldGroup({ id, label, help, ...props }) {
+export default function FieldGroup({ id, label, error, ...props }) {
   return (
-    <FormGroup controlId={id}>
+    <FormGroup controlId={id} validationState={error && "error"}>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />
-      {help && <HelpBlock>{help}</HelpBlock>}
+      {error && <HelpBlock>{error}</HelpBlock>}
     </FormGroup>
   );
 };

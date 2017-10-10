@@ -9,14 +9,13 @@ import User from 'User';
 class Logout extends Component {
   componentWillMount() {
     Api.logoutUser(Auth.getUserTokens())
+    .catch((error) => {
+      console.log(error);
+    })
     .then(() => {
       Auth.removeUserTokens();
       User.removeUserInfo();
-
       this.props.history.push('/');
-    })
-    .catch((error) => {
-      console.log(error);
     });
   }
 

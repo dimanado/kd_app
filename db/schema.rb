@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928111139) do
+ActiveRecord::Schema.define(version: 20171010102456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
     t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type", null: false
+    t.bigint "company_type_id", null: false
+    t.bigint "ownership_type_id", null: false
+    t.index ["company_type_id"], name: "index_companies_on_company_type_id"
+    t.index ["ownership_type_id"], name: "index_companies_on_ownership_type_id"
+  end
+
+  create_table "company_representatives", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_representatives_on_company_id"
+    t.index ["user_id"], name: "index_company_representatives_on_user_id"
+  end
+
+  create_table "company_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ownership_types", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,4 +78,8 @@ ActiveRecord::Schema.define(version: 20170928111139) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "companies", "company_types"
+  add_foreign_key "companies", "ownership_types"
+  add_foreign_key "company_representatives", "companies"
+  add_foreign_key "company_representatives", "users"
 end

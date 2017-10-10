@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
+  has_many :companies, through: :company_representative
+
   after_create :create_profile
 
   private

@@ -9,8 +9,8 @@
 #
 
 class Company < ApplicationRecord
-  has_one :ownership_type
-  has_one :company_type
+  belongs_to :ownership_type
+  belongs_to :company_type
 
   has_many :company_representatives, dependent: :destroy
   has_many :users, through: :company_representatives

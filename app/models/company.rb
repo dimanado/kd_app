@@ -18,13 +18,3 @@ class Company < ApplicationRecord
   validates :ownership_type, presence: true
   validates :company_type, presence: true
 end
-
-
-class CompanyRepresentative < ApplicationRecord
-  belongs_to :user
-  belongs_to :company
-  validates :company, uniqueness: { scope: :user,
-    message: "Represntative already exists" }
-
-  validates :status, presence: true
-end

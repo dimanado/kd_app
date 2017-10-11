@@ -19,17 +19,17 @@ ActiveRecord::Schema.define(version: 20171010102456) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comp_type", null: false
-    t.bigint "company_type_id", null: false
-    t.bigint "ownership_type_id", null: false
+    t.string "comp_type"
+    t.bigint "company_type_id"
+    t.bigint "ownership_type_id"
     t.index ["company_type_id"], name: "index_companies_on_company_type_id"
     t.index ["ownership_type_id"], name: "index_companies_on_ownership_type_id"
   end
 
   create_table "company_representatives", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "company_id", null: false
-    t.string "status", null: false
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_representatives_on_company_id"
@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(version: 20171010102456) do
   end
 
   create_table "company_types", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ownership_types", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,8 +78,4 @@ ActiveRecord::Schema.define(version: 20171010102456) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "companies", "company_types"
-  add_foreign_key "companies", "ownership_types"
-  add_foreign_key "company_representatives", "companies"
-  add_foreign_key "company_representatives", "users"
 end

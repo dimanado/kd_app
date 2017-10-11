@@ -8,35 +8,7 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
-  def create
-    @company = Company.create(company_params)
-    CompanyRepresentative.create(user_id: current_user.id, company_id: @company.id, status: params[:status])
-  end
-
-  def update
-    @company.update(company_params)
-    @company_representative.update(status: params[:status])
-  end
-
-  def destroy
-    @company.destroy
-  end
-
-  private
-
-  def set_company_representative
-    @company_representative = CompanyRepresentative.find_by(user_id: current_user.id, company_id: @company.id)
-  end
-
-  def set_company
+  def show
     @company = Company.find(params[:id])
-  end
-
-  def check_user
-    raise Pundit::NotAuthorizedError unless @company.users.any? { |user| user.id == current_user.id }
-  end
-
-  def company_params
-    params.require(:company).permit(:title, :comp_type, :ownership_type_id, :company_type_id)
   end
 end

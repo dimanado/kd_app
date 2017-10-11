@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :profiles, only: [:show, :update]
 
-    resources :companies
+    resources :companies, expect[:edit]
   end
 end

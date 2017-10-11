@@ -2,12 +2,13 @@ import React from 'react';
 import { Form, withFormik } from 'formik';
 import { Button } from 'react-bootstrap';
 import FieldGroup from 'FieldGroup';
-import FieldSelect from 'FieldGroup';
+import FieldSelect from 'FieldSelect';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
 
 const ProfileForm = withFormik({
+
   mapPropsToValues: (props) => ({ ...props.profile }),
 
   validationSchema: Yup.object().shape({
@@ -37,7 +38,9 @@ const ProfileForm = withFormik({
     isSubmitting,
     handleChange,
     handleBlur,
-    touched
+    touched,
+    setFieldValue,
+    setFieldTouched
     } = props;
 
   return (
@@ -78,9 +81,9 @@ const ProfileForm = withFormik({
         label="Sex"
         name="sex"
         options={[{ value: 'female', label: 'female' }, { value: 'male', label: 'male' }]}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value="female"
+        onChange={setFieldValue}
+        onBlur={setFieldTouched}
+        value={values.sex}
         error={touched.sex && errors.sex}
       />
 

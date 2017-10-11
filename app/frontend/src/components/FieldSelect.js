@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-export default function FieldSelect({ id, label, error, ...props }) {
-  return (
-    <FormGroup controlId={id} validationState={error && "error"}>
-      <ControlLabel>{label}</ControlLabel>
-      <Select {...props} />
-      {error && <HelpBlock>{error}</HelpBlock>}
-    </FormGroup>
-  );
-};
+class FieldSelect extends Component {
+  handleChange = value => {
+    this.props.onChange(this.props.name, value);
+  };
+
+  handleBlur = () => {
+    this.props.onBlur(this.props.name, true);
+  };
+
+  render() {
+    return (
+      <FormGroup controlId={this.props.id} validationState={this.props.error && "error"}>
+        <ControlLabel>{this.props.label}</ControlLabel>
+        <Select
+          id={this.props.id}
+          options={this.props.options}
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+          value={this.props.value}
+        />
+      {this.props.error && <HelpBlock>{this.props.error}</HelpBlock>}
+      </FormGroup>
+    );
+  }
+}
+
+export default FieldSelect;

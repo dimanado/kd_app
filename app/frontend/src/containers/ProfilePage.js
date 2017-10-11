@@ -15,6 +15,7 @@ class ProfilePage extends Component {
         firstName: "",
         lastName: "",
         age: 0,
+        sex: "",
         userId: 0
       },
       user: User.getUserInfo(),
@@ -29,7 +30,7 @@ class ProfilePage extends Component {
         firstName: data.first_name,
         lastName: data.last_name,
         age: data.age,
-        sex: 'null',
+        sex: data.sex,
         userId: this.state.user.id
       };
       this.setState({profile, spinner: false});

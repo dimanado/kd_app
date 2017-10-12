@@ -9,4 +9,12 @@
 #
 
 class Company < ApplicationRecord
+  belongs_to :ownership_type
+  belongs_to :company_type
+
+  has_many :company_representatives, dependent: :destroy
+  has_many :users, through: :company_representatives
+
+  validates :ownership_type, presence: true
+  validates :company_type, presence: true
 end

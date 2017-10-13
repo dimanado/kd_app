@@ -1,12 +1,12 @@
-.Nav {
+.Menu {
   margin-bottom: 35px;
   padding: 0;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.Nav .nav-item {
+.Menu .nav-item {
   position: relative;
-  height: 190px;
+  height: 220px;
   flex-basis: calc((100% - 60px) / 3);
   margin-right: 30px;
   margin-bottom: 15px;
@@ -16,26 +16,27 @@
 
   background-image: url("../images/books.jpg");
   background-size: cover;
+  background-position: center;
   filter: grayscale(0.5);
 }
 
-.Nav .nav-item.About {
+.Menu .nav-item.About {
   background-image: url("../images/about.jpg");
 }
 
-.Nav .nav-item.Board {
+.Menu .nav-item.Board {
   background-image: url("../images/board.jpg");
 }
 
-.Nav .nav-item.EventsAndNews {
+.Menu .nav-item.EventsAndNews {
   background-image: url("../images/events.jpg");
 }
 
-.Nav .nav-item.ForAuthors {
+.Menu .nav-item.ForAuthors {
   background-image: url("../images/for-authors.jpg");
 }
 
-.Nav .nav-item::before {
+.Menu .nav-item::before {
   content: "";
   position: absolute;
   top: 0;
@@ -48,31 +49,31 @@
   transition: all 0.2s;
 }
 
-.Nav .nav-item:hover::before {
+.Menu .nav-item:hover::before {
   opacity: 0.85;
 }
 
-.Nav .nav-item:nth-child(3n) {
+.Menu .nav-item:nth-child(3n) {
   margin-right: 0;
 }
 
-.Nav .nav-item:nth-child(n + 3) {
+.Menu .nav-item:nth-child(n + 3) {
   margin-bottom: 0;
 }
 
-.Nav .nav-link {
+.Menu .nav-link {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
 }
 
-.Nav .navbar-brand {
+.Menu .navbar-brand {
   font-weight: 800;
   color: #777777;
 }
 
-.Nav .navbar-toggler {
+.Menu .navbar-toggler {
   font-size: 12px;
   font-weight: 800;
   padding: 13px;
@@ -80,12 +81,12 @@
   color: #777777;
 }
 
-.Nav .navbar-nav {
+.Menu .navbar-nav {
   width: 100%;
   flex-wrap: wrap;
 }
 
-.Nav .navbar-nav > li.nav-item > a {
+.Menu .navbar-nav > li.nav-item > a {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -93,34 +94,34 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .Nav {
+  .Menu {
     border-bottom: 1px solid transparent;
     background: transparent;
   }
 
-  .Nav .navbar-brand {
+  .Menu .navbar-brand {
     padding: 15px 20px;
     color: white;
   }
 
-  .Nav .navbar-brand:focus,
-  .Nav .navbar-brand:hover {
+  .Menu .navbar-brand:focus,
+  .Menu .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.8);
   }
 
-  .Nav .navbar-nav > li.nav-item > a {
+  .Menu .navbar-nav > li.nav-item > a {
     padding: 15px 20px;
     color: white;
   }
 
-  .Nav .navbar-nav > li.nav-item > a:focus,
-  .Nav .navbar-nav > li.nav-item > a:hover {
+  .Menu .navbar-nav > li.nav-item > a:focus,
+  .Menu .navbar-nav > li.nav-item > a:hover {
     color: rgba(255, 255, 255, 0.8);
   }
 }
 
 @media only screen and (min-width: 1170px) {
-  .Nav {
+  .Menu {
     -webkit-transition: background-color 0.2s;
     -moz-transition: background-color 0.2s;
     transition: background-color 0.2s;
@@ -132,7 +133,7 @@
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
   }
-  .Nav.is-fixed {
+  .Menu.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -77px;
@@ -142,21 +143,21 @@
     border-bottom: 1px solid white;
     background-color: rgba(255, 255, 255, 0.9);
   }
-  .Nav.is-fixed .navbar-brand {
+  .Menu.is-fixed .navbar-brand {
     color: #333333;
   }
-  .Nav.is-fixed .navbar-brand:focus,
-  .Nav.is-fixed .navbar-brand:hover {
+  .Menu.is-fixed .navbar-brand:focus,
+  .Menu.is-fixed .navbar-brand:hover {
     color: #0085a1;
   }
-  .Nav.is-fixed .navbar-nav > li.nav-item > a {
+  .Menu.is-fixed .navbar-nav > li.nav-item > a {
     color: #333333;
   }
-  .Nav.is-fixed .navbar-nav > li.nav-item > a:focus,
-  .Nav.is-fixed .navbar-nav > li.nav-item > a:hover {
+  .Menu.is-fixed .navbar-nav > li.nav-item > a:focus,
+  .Menu.is-fixed .navbar-nav > li.nav-item > a:hover {
     color: #0085a1;
   }
-  .Nav.is-visible {
+  .Menu.is-visible {
     /* if the user changes the scrolling direction, we show the header */
     -webkit-transform: translate3d(0, 100%, 0);
     -moz-transform: translate3d(0, 100%, 0);

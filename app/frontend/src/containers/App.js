@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import routes from 'routes';
-import Header from 'Header';
-import Footer from 'Footer';
-import SocialIcons from 'SocialIcons';
-import SearchForm from 'SearchForm';
-import 'App.css';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import routes from "routes";
+import Header from "Header";
+import Footer from "Footer";
+import SocialIcons from "SocialIcons";
+import SearchForm from "SearchForm";
+import UserInfo from "UserInfo";
+import "App.css";
 
 class App extends Component {
   render() {
@@ -14,9 +15,10 @@ class App extends Component {
         <Header>
           <SocialIcons large className="d-flex justify-content-between" />
           <SearchForm />
+          <UserInfo />
         </Header>
 
-        { routes.map((route, i) => <Route {...route} key={i} />) }
+        {routes.map((route, i) => <Route {...route} key={i} />)}
 
         <hr />
 

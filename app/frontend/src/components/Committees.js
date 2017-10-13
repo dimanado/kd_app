@@ -1,17 +1,41 @@
-import React from 'react';
-import 'Committees.css';
+import React from "react";
+import "Committees.css";
+import skrb from "skrb.png";
+import skrf from "skrf.png";
+import skarm from "skarm.png";
 
 export default function Committees() {
   return (
-    <ul className="Committees list-unstyled text-left">
+    <ul className="Committees list-unstyled text-left d-flex">
       <li>
-        <a href="http://sk.gov.by/ru/">СК РБ</a>
+        <a href="http://sk.gov.by/ru/" className="Committees-link">
+          <img
+            src={skrb}
+            alt="Следственный комитет Республики Беларусь"
+            title="Следственный комитет Республики Беларусь"
+            className="Committees-logo"
+          />
+        </a>
       </li>
       <li>
-        <a href="http://sledcom.ru/">СК РФ</a>
+        <a href="http://sledcom.ru/" className="Committees-link">
+          <img
+            src={skrf}
+            alt="Следственный комитет Российской Федерации"
+            title="Следственный комитет Российской Федерации"
+            className="Committees-logo"
+          />
+        </a>
       </li>
       <li>
-        <a href="http://www.ccc.am/ru/">СК Армении</a>
+        <a href="http://www.ccc.am/ru/" className="Committees-link">
+          <img
+            src={skarm}
+            alt="Специальная следственная служба Республики Армения"
+            title="Специальная следственная служба Республики Армения"
+            className="Committees-logo"
+          />
+        </a>
       </li>
     </ul>
   );

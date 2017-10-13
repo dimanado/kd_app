@@ -3,8 +3,7 @@ body {
   padding: 0;
   font-size: 20px;
   color: #333333;
-  -webkit-tap-highlight-color: #0085A1;
-  font-family: 'Lora', 'Times New Roman', serif;
+  -webkit-tap-highlight-color: #0085a1;
 }
 
 p {
@@ -16,27 +15,14 @@ p a {
   text-decoration: underline;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 800;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 a {
   color: #333333;
   transition: all 0.2s;
 }
 
-a:focus, a:hover {
-  color: #0085A1;
-}
-
-a img:focus, a img:hover {
-  cursor: zoom-in;
+a:focus,
+a:hover {
+  color: #0085a1;
 }
 
 blockquote {
@@ -63,13 +49,13 @@ blockquote {
 
 ::-moz-selection {
   color: white;
-  background: #0085A1;
+  background: #0085a1;
   text-shadow: none;
 }
 
 ::selection {
   color: white;
-  background: #0085A1;
+  background: #0085a1;
   text-shadow: none;
 }
 

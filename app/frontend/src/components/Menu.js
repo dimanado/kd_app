@@ -1,9 +1,9 @@
 import React from "react";
-import "Nav.css";
+import "Menu.css";
 
-export default function Nav() {
+export default function Menu() {
   return (
-    <nav className="Nav navbar navbar-expand-lg navbar-light">
+    <nav className="Menu navbar navbar-expand-lg navbar-light">
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"

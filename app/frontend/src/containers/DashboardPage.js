@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col} from 'react-bootstrap';
-import User from 'User';
+import React, { Component } from "react";
+import { Grid, Row, Col } from "react-bootstrap";
+import User from "User";
 
 class DashboardPage extends Component {
   componentWillMount() {
@@ -13,9 +13,7 @@ class DashboardPage extends Component {
     return (
       <Grid>
         <Row>
-          <Col xs={12}>
-            Hello, {this.state.user.email}
-          </Col>
+          <Col xs={12}>Hello, {this.state.user.email}</Col>
         </Row>
       </Grid>
     );

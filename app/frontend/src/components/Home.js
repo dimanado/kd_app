@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from 'Nav';
+import Menu from 'Menu';
 import Header from 'Header';
 import Committees from 'Committees';
 
@@ -8,7 +8,7 @@ export default function Home() {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <Nav />
+          <Menu />
         </div>
 
         <div className="col-12">

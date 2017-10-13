@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Collegium() {
   return (
@@ -10,7 +10,10 @@ export default function Collegium() {
             <br />
 
             <div>ПРЕДСЕДАТЕЛЬ</div>
-            <div>НОСКЕВИЧ Иван Данилович, Председатель Следственного комитета Республики Беларусь</div>
+            <div>
+              НОСКЕВИЧ Иван Данилович, Председатель Следственного комитета
+              Республики Беларусь
+            </div>
             <br />
 
             <div>ЗАМЕСТИТЕЛЬ ПРЕДСЕДАТЕЛЯ</div>

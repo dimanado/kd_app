@@ -1,6 +1,6 @@
-import axios from 'axios';
-import toSnakeCase from 'toSnakeCase';
-import convertObjectKeys from 'convertObjectKeys';
+import axios from "axios";
+import toSnakeCase from "toSnakeCase";
+import convertObjectKeys from "convertObjectKeys";
 
 export default class Api {
   static signUpUser(user) {
@@ -19,7 +19,7 @@ export default class Api {
 
   static profileShow(id, userTokens) {
     return axios({
-      method: 'get',
+      method: "get",
       url: `api/profiles/${id}`,
       headers: userTokens
     });
@@ -27,7 +27,7 @@ export default class Api {
 
   static profileUpdate(id, profile, userTokens) {
     return axios({
-      method: 'put',
+      method: "put",
       url: `api/profiles/${id}`,
       headers: userTokens,
       data: { profile: convertObjectKeys(profile, toSnakeCase) }

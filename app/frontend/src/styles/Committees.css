@@ -1,7 +1,14 @@
 .Committees {
-
 }
 
-.Committees a {
-  color: white;
+.Committees li:not(:last-child) {
+  margin-right: 40px;
+}
+
+.Committees-link {
+  display: block;
+}
+
+.Committees-logo {
+  max-height: 90px;
 }

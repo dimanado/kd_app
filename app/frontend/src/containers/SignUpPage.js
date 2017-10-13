@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Grid, Row, Col } from 'react-bootstrap';
-import SignUpForm from 'SignUpForm';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { Grid, Row, Col } from "react-bootstrap";
+import SignUpForm from "SignUpForm";
 
 class SignUpPage extends Component {
   handleSubmit = () => {
     this.props.history.push("/");
-  }
+  };
 
   render() {
     return (

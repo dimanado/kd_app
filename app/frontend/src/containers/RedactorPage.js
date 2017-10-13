@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Redactor from 'Redactor';
+import React, { Component } from "react";
+import Redactor from "Redactor";
 
 class RedactorPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      content: 'Default Content'
-    }
+      content: "Default Content"
+    };
   }
 
   onChange(e) {

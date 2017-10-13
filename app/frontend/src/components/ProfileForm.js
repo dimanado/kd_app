@@ -1,13 +1,8 @@
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import FieldGroup from 'FieldGroup';
+import React from "react";
+import { Form, Button } from "react-bootstrap";
+import FieldGroup from "FieldGroup";
 
-const ProfileForm = ({
-  onFormSubmit,
-  onChange,
-  errors,
-  user,
-  }) => (
+const ProfileForm = ({ onFormSubmit, onChange, errors, user }) => (
   <Form>
     <FieldGroup
       id="formControlsFirstName"

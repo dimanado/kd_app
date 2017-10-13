@@ -1,9 +1,9 @@
 .SearchForm {
-
+  margin-bottom: 20px;
 }
 
 .SearchForm .form-group {
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .SearchForm .form-control {

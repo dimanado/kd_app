@@ -1,41 +1,51 @@
 .PIApp {
-
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .PIApp .container {
-    max-width: 960px;
+    max-width: 1250px;
   }
 }
 
 .post-preview > a {
-  color: #333333; }
-  .post-preview > a:focus, .post-preview > a:hover {
-    text-decoration: none;
-    color: #0085A1; }
-  .post-preview > a > .post-title {
-    font-size: 30px;
-    margin-top: 30px;
-    margin-bottom: 10px; }
-  .post-preview > a > .post-subtitle {
-    font-weight: 300;
-    margin: 0 0 10px; }
+  color: #333333;
+}
+.post-preview > a:focus,
+.post-preview > a:hover {
+  text-decoration: none;
+  color: #0085a1;
+}
+.post-preview > a > .post-title {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.post-preview > a > .post-subtitle {
+  font-weight: 300;
+  margin: 0 0 10px;
+}
 
 .post-preview > .post-meta {
   font-size: 18px;
   font-style: italic;
   margin-top: 0;
-  color: #777777; }
-  .post-preview > .post-meta > a {
-    text-decoration: none;
-    color: #333333; }
-    .post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
-      text-decoration: underline;
-      color: #0085A1; }
+  color: #777777;
+}
+.post-preview > .post-meta > a {
+  text-decoration: none;
+  color: #333333;
+}
+.post-preview > .post-meta > a:focus,
+.post-preview > .post-meta > a:hover {
+  text-decoration: underline;
+  color: #0085a1;
+}
 
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 36px; } }
+    font-size: 36px;
+  }
+}
 
 .btn {
   font-size: 14px;
@@ -45,7 +55,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   border-radius: 0;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .btn-primary {
@@ -66,39 +76,59 @@
   background-color: #17296f;
 }
 
-  .btn-primary.active, .btn-primary:active,
-  .open > .btn-primary.dropdown-toggle {
-    color: white;
-    border-color: #005264;
-    background-color: #005b6e; }
-    .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover,
-    .open > .btn-primary.dropdown-toggle.focus,
-    .open > .btn-primary.dropdown-toggle:focus,
-    .open > .btn-primary.dropdown-toggle:hover {
-      color: white;
-      border-color: #001c22;
-      background-color: #003d4a; }
-  .btn-primary.active, .btn-primary:active,
-  .open > .btn-primary.dropdown-toggle {
-    background-image: none; }
-  .btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover,
-  fieldset[disabled] .btn-primary.focus,
-  fieldset[disabled] .btn-primary:focus,
-  fieldset[disabled] .btn-primary:hover {
-    border-color: #0085A1;
-    background-color: #0085A1; }
-  .btn-primary .badge {
-    color: #0085A1;
-    background-color: white; }
+.btn-primary.active,
+.btn-primary:active,
+.open > .btn-primary.dropdown-toggle {
+  color: white;
+  border-color: #005264;
+  background-color: #005b6e;
+}
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open > .btn-primary.dropdown-toggle.focus,
+.open > .btn-primary.dropdown-toggle:focus,
+.open > .btn-primary.dropdown-toggle:hover {
+  color: white;
+  border-color: #001c22;
+  background-color: #003d4a;
+}
+.btn-primary.active,
+.btn-primary:active,
+.open > .btn-primary.dropdown-toggle {
+  background-image: none;
+}
+.btn-primary.disabled.focus,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:hover,
+.btn-primary[disabled].focus,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary.focus,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:hover {
+  border-color: #0085a1;
+  background-color: #0085a1;
+}
+.btn-primary .badge {
+  color: #0085a1;
+  background-color: white;
+}
 
 .btn-lg {
   font-size: 16px;
-  padding: 25px 35px; }
+  padding: 25px 35px;
+}
 
-.btn-default:focus, .btn-default:hover {
+.btn-default:focus,
+.btn-default:hover {
   color: white;
-  border: 1px solid #0085A1;
-  background-color: #0085A1; }
+  border: 1px solid #0085a1;
+  background-color: #0085a1;
+}
 
 .form-control {
   border-radius: 0;

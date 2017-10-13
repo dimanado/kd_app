@@ -1,6 +1,5 @@
-import React from 'react';
-import SocialIcons from 'SocialIcons';
-import 'Footer.css';
+import React from "react";
+import "Footer.css";
 
 export default function Footer() {
   return (
@@ -8,9 +7,10 @@ export default function Footer() {
       <div className="container">
         <div className="row">
           <div className="col-lg-8 col-md-10 mx-auto">
-            <SocialIcons round />
-
-            <p className="copyright text-muted">&copy; 2014-2017, Следственный комитет Республики Беларусь. Все права защищены</p>
+            <p className="copyright text-muted">
+              &copy; 2014-2017, Следственный комитет Республики Беларусь. Все
+              права защищены
+            </p>
           </div>
         </div>
       </div>

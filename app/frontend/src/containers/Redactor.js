@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-const loadScript = require('load-script');
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import ReactDOM from "react-dom";
+const loadScript = require("load-script");
 
 const defaultScriptUrl = "https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js";
 
@@ -41,7 +41,7 @@ export default class Redactor extends Component {
       this.props.content
     );
 
-    for (const event in this.props.events){
+    for (const event in this.props.events) {
       const eventHandler = this.props.events[event];
 
       this.editorInstance.on(event, eventHandler);

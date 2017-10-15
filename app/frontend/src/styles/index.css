@@ -1,3 +1,8 @@
+html {
+  position: relative;
+  padding-bottom: 145px;
+}
+
 body {
   margin: 0;
   padding: 0;

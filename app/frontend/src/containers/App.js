@@ -18,9 +18,10 @@ class App extends Component {
           <UserInfo />
         </Header>
 
-        {routes.map((route, i) => <Route {...route} key={i} />)}
-
-        <hr />
+        {routes.map((route, i) => {
+          console.log(route);
+          return <Route {...route} key={i} />;
+        })}
 
         <Footer />
       </div>

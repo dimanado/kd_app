@@ -20,19 +20,19 @@
   filter: grayscale(0.5);
 }
 
-.Menu .nav-item.About {
+.Menu .nav-item.AboutPage {
   background-image: url("../images/about.jpg");
 }
 
-.Menu .nav-item.Board {
+.Menu .nav-item.BoardPage {
   background-image: url("../images/board.jpg");
 }
 
-.Menu .nav-item.EventsAndNews {
+.Menu .nav-item.EventsAndNewsPage {
   background-image: url("../images/events.jpg");
 }
 
-.Menu .nav-item.ForAuthors {
+.Menu .nav-item.ForAuthorsPage {
   background-image: url("../images/for-authors.jpg");
 }
 
@@ -91,6 +91,17 @@
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.Menu.Menu--aside {
+  flex-direction: column;
+}
+
+.Menu.Menu--aside .nav-item {
+  height: 100px;
+  width: 100%;
+  flex-basis: auto;
+  margin: 0 0 15px 0;
 }
 
 @media only screen and (min-width: 992px) {

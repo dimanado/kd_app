@@ -6,6 +6,7 @@ import SignUpPage from 'SignUpPage';
 import ProfilePage from 'ProfilePage';
 import Logout from 'Logout';
 import Auth from 'Auth';
+import CreateCompanyPage from 'CreateCompanyPage';
 
 
 const routes = [
@@ -34,6 +35,11 @@ const routes = [
   {
     path: '/profile',
     component: ProfilePage
+  },
+
+  {
+    path: '/create-company',
+    component: CreateCompanyPage
   },
 
   {

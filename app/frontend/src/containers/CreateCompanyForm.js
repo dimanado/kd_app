@@ -3,13 +3,15 @@ import { withFormik } from 'formik';
 import { Button } from 'react-bootstrap';
 import { Form } from 'formik';
 import FieldGroup from 'FieldGroup';
+import SelectField from 'SelectField';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
 import User from 'User';
+import Config from 'config';
 
 const CreateCompany = withFormik({
-  mapPropsToValues: (props) => ({ title: '', ownership_type_id: '1', company_type_id: '1', status: 'OK' }),
+  mapPropsToValues: (props) => ({ title: '', ownership_type_id: '1', company_type_id: '1', status: '' }),
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
@@ -43,8 +45,9 @@ const CreateCompany = withFormik({
     touched
   } = props;
 
+
   return (
-    <Form>
+    <Form className="container">
       <FieldGroup
         id="formControlsName"
         label="Title"
@@ -56,18 +59,36 @@ const CreateCompany = withFormik({
         onBlur={handleBlur}
       />
       <FieldGroup
-        id="formControlsOwnershipType"
-        label="Ownership type"
-        name="ownership_type_id"
-        value={values.ownership_type_id}
+        id="formControlsCompType"
+        label="Company type"
+        name="comp_type"
+        value={values.comp_type}
         onChange={handleChange}
         onBlur={handleBlur}
       />
       <FieldGroup
-        id="formControlsCompanyType"
-        label="Company type"
+        id="formControlsCompType"
+        label="Status"
+        name="status"
+        value={values.status}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <SelectField
+        id="formControlsCompanyTypeId"
+        label="Company Type"
         name="company_type_id"
+        value={values.company_type_id}
+        options={Config.companyTypes}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <SelectField
+        id="formControlsOwnershipType"
+        label="Ownership Type"
+        name="ownership_type_id"
         value={values.ownership_type_id}
+        options={Config.ownershipTypes}
         onChange={handleChange}
         onBlur={handleBlur}
       />

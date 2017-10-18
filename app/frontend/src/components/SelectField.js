@@ -1,0 +1,17 @@
+import React from 'react';
+import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
+
+export default function SelectField({ id, label, error, options, ...props }) {
+  console.log(props);
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl componentClass="select" placeholder={label}>
+        {Object.keys(options).map((key) => {
+          return (<option value={key} key={key}>{options[key]}</option>)
+        })}
+      </FormControl>
+      {error && <HelpBlock>{error}</HelpBlock>}
+    </FormGroup>
+  );
+};

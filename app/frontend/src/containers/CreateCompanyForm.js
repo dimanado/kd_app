@@ -11,7 +11,13 @@ import User from 'User';
 import Config from 'config';
 
 const CreateCompanyForm = withFormik({
-  mapPropsToValues: (props) => ({ title: '', ownership_type_id: '1', company_type_id: '1', comp_type: '', status: '' }),
+  mapPropsToValues: (props) => ({
+    title: '',
+    ownershipTypeId: '1',
+    companyTypeId: '1',
+    compType: '',
+    status: ''
+  }),
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
@@ -25,7 +31,6 @@ const CreateCompanyForm = withFormik({
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
     Api.createCompany(User.getUserInfo().id, values, Auth.getUserTokens())
     .then(({data, headers}) => {
-
       props.handleSubmit();
     })
     .catch(({response}) => {
@@ -65,9 +70,9 @@ const CreateCompanyForm = withFormik({
       <FieldGroup
         id="formControlsCompType"
         label="Company type"
-        name="comp_type"
-        value={values.comp_type}
-        error={touched.comp_type && errors.comp_type}
+        name="compType"
+        value={values.compType}
+        error={touched.compType && errors.compType}
         onChange={handleChange}
         onBlur={handleBlur}
       />
@@ -83,9 +88,9 @@ const CreateCompanyForm = withFormik({
       <SelectField
         id="formControlsCompanyTypeId"
         label="Company Type"
-        name="company_type_id"
-        value={values.company_type_id}
-        error={touched.company_type_id && errors.company_type_id}
+        name="companyTypeId"
+        value={values.companyTypeId}
+        error={touched.companyTypeId && errors.companyTypeId}
         options={Config.companyTypes}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -93,9 +98,9 @@ const CreateCompanyForm = withFormik({
       <SelectField
         id="formControlsOwnershipType"
         label="Ownership Type"
-        name="ownership_type_id"
-        value={values.ownership_type_id}
-        error={touched.ownership_type_id && errors.ownership_type_id}
+        name="ownershipTypeId"
+        value={values.ownershipTypeId}
+        error={touched.ownershipTypeId && errors.ownershipTypeId}
         options={Config.ownershipTypes}
         onChange={handleChange}
         onBlur={handleBlur}

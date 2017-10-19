@@ -49,7 +49,7 @@ class ProfilePage extends Component {
           </Row>
         ) : (
           <Row>
-            <Col xs={3} md={3}>
+            <Col xs={12} md={4}>
               <div className="well">
                 <a href="/create-company"><Button bsSize="large" block>Create company</Button></a>
                 <a href="/join-to-company"><Button bsSize="large" block>Join to company</Button></a>
@@ -59,12 +59,13 @@ class ProfilePage extends Component {
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
                 profile={this.state.profile}/>
-
+            </Col>
+            <Col xs={12} md={4}>
               <p>Your companies:</p>
               <ListGroup>
                 {this.state.userCompanies.map((item, index) => {
                   return (
-                    <ListGroupItem key={index}>{item.title}</ListGroupItem>
+                    <ListGroupItem key={index} className="App-hoverable">{item.title}</ListGroupItem>
                   )
                 })}
               </ListGroup>

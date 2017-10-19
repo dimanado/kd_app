@@ -10,10 +10,14 @@ class CreateCompanyPage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <p><a href="/profile"><b>Back to profile</b></a></p>
-        <CreateCompanyForm handleSubmit={this.handleSubmit} />
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={12} md={4} mdOffset={4}>
+            <p><a href="/profile"><b>Back to profile</b></a></p>
+            <CreateCompanyForm handleSubmit={this.handleSubmit} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

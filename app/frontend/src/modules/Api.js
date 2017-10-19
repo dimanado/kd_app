@@ -39,7 +39,7 @@ export default class Api {
       method: 'POST',
       url: `api/profiles/${profileId}/create_company`,
       headers: userTokens,
-      data: { company: params }
+      data: { company: convertObjectKeys(params, toSnakeCase) }
     });
   }
 }

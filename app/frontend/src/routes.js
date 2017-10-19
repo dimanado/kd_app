@@ -43,6 +43,11 @@ const routes = [
   },
 
   {
+    path: '/edit-company/:id',
+    component: CreateCompanyPage
+  },
+
+  {
     path: '/logout',
     component: Logout
   }

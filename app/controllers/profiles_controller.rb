@@ -16,16 +16,8 @@ class ProfilesController < ApplicationController
   end
 
   def create_company
-    @company = Company.new(company_params)
-    if @company.valid?
-      @company.save!
-      @company_representative = CompanyRepresentative.new(user: current_user, company: @company, status: params.require(:company)[:status])
-      if @company_representative.valid?
-        @company_representative.save!
-      else
-        render_error_messages(@company_representative)
-      end
-    else
+    @company = Company.create_company(company_params, current_user, params[:company][:status])
+    if !@company.valid?
       render_error_messages(@company)
     end
   end

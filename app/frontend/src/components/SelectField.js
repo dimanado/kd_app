@@ -2,7 +2,6 @@ import React from 'react';
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 
 export default function SelectField({ id, label, error, options, ...props }) {
-  console.log(props);
   return (
     <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>

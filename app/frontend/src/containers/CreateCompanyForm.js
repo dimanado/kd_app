@@ -10,8 +10,8 @@ import Auth from 'Auth';
 import User from 'User';
 import Config from 'config';
 
-const CreateCompany = withFormik({
-  mapPropsToValues: (props) => ({ title: '', ownership_type_id: '1', company_type_id: '1', status: '' }),
+const CreateCompanyForm = withFormik({
+  mapPropsToValues: (props) => ({ title: '', ownership_type_id: '1', company_type_id: '1', comp_type: '', status: '' }),
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
@@ -25,16 +25,16 @@ const CreateCompany = withFormik({
       props.handleSubmit();
     })
     .catch(({response}) => {
-      setErrors({
-        title: true
-      });
+      if (response) {
+        setErrors(response.data.errors);
+      }
     })
     .then(() => {
       setSubmitting(false);
     });
   },
 
-  displayName: 'CreateCompany'
+  displayName: 'CreateCompanyForm'
 })((props) => {
   const {
     values,
@@ -63,6 +63,7 @@ const CreateCompany = withFormik({
         label="Company type"
         name="comp_type"
         value={values.comp_type}
+        error={touched.comp_type && errors.comp_type}
         onChange={handleChange}
         onBlur={handleBlur}
       />
@@ -71,6 +72,7 @@ const CreateCompany = withFormik({
         label="Status"
         name="status"
         value={values.status}
+        error={touched.status && errors.status}
         onChange={handleChange}
         onBlur={handleBlur}
       />
@@ -79,6 +81,7 @@ const CreateCompany = withFormik({
         label="Company Type"
         name="company_type_id"
         value={values.company_type_id}
+        error={touched.company_type_id && errors.company_type_id}
         options={Config.companyTypes}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -88,6 +91,7 @@ const CreateCompany = withFormik({
         label="Ownership Type"
         name="ownership_type_id"
         value={values.ownership_type_id}
+        error={touched.ownership_type_id && errors.ownership_type_id}
         options={Config.ownershipTypes}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -100,4 +104,4 @@ const CreateCompany = withFormik({
   );
 });
 
-export default CreateCompany;
+export default CreateCompanyForm;

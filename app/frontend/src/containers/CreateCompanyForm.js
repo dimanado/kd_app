@@ -15,7 +15,11 @@ const CreateCompanyForm = withFormik({
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
-      .required('Title is required')
+      .required('Title is required'),
+    comp_type: Yup.string()
+      .required('Comp type is required'),
+    status: Yup.string()
+      .required('Status is required')
   }),
 
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
@@ -47,7 +51,7 @@ const CreateCompanyForm = withFormik({
 
 
   return (
-    <Form className="container">
+    <Form>
       <FieldGroup
         id="formControlsName"
         label="Title"

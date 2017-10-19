@@ -5,20 +5,17 @@ import CreateCompanyForm from 'CreateCompanyForm';
 
 class CreateCompanyPage extends Component {
   handleSubmit = () => {
-    this.props.history.push("/");
+    this.props.history.push("/profile");
   }
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={4} mdOffset={4}>
-            <CreateCompanyForm handleSubmit={this.handleSubmit} />
-          </Col>
-        </Row>
-      </Grid>
+      <div className="container">
+        <p><a href="/profile"><b>Back to profile</b></a></p>
+        <CreateCompanyForm handleSubmit={this.handleSubmit} />
+      </div>
     );
   }
 }
 
-export default withRouter(CreateCompanyForm);
+export default withRouter(CreateCompanyPage);

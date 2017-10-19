@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col} from 'react-bootstrap';
+import { Grid, Row, Col, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
 import MDSpinner from "react-md-spinner";
 import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
@@ -17,6 +17,7 @@ class ProfilePage extends Component {
         userId: 0
       },
       user: User.getUserInfo(),
+      userCompanies: [],
       spinner: true
     };
   }
@@ -29,7 +30,8 @@ class ProfilePage extends Component {
         lastName: data.last_name,
         userId: this.state.user.id
       };
-      this.setState({profile, spinner: false});
+
+      this.setState({profile, spinner: false, userCompanies: data.companies});
     })
     .catch((error) => {
       console.log(error);
@@ -39,19 +41,36 @@ class ProfilePage extends Component {
   render() {
     return(
       <Grid>
-        <Row>
-          { this.state.spinner ? (
+        { this.state.spinner ? (
+          <Row>
             <Col xs={12} md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
-          ) : (
-            <Col xs={12} md={4} mdOffset={1}>
+          </Row>
+        ) : (
+          <Row>
+            <Col xs={3} md={3}>
+              <div className="well">
+                <a href="/create-company"><Button bsSize="large" block>Create company</Button></a>
+                <a href="/join-to-company"><Button bsSize="large" block>Join to company</Button></a>
+              </div>
+            </Col>
+            <Col xs={12} md={4}>
               <div>Hello, {this.state.user.email}</div>
               <ProfileForm
                 profile={this.state.profile}/>
+
+              <p>Your companies:</p>
+              <ListGroup>
+                {this.state.userCompanies.map((item, index) => {
+                  return (
+                    <ListGroupItem key={index}>{item.title}</ListGroupItem>
+                  )
+                })}
+              </ListGroup>
             </Col>
-          )}
-        </Row>
+          </Row>
+        )}
       </Grid>
     );
   }

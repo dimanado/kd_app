@@ -5,6 +5,7 @@ import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
+import PhotoForm from 'PhotoForm'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -45,15 +46,19 @@ class ProfilePage extends Component {
       <Grid>
         <Row>
           { this.state.spinner ? (
-            <Col xs={12} md={2} mdOffset={5}>
+            <Col md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
           ) : (
-            <Col xs={12} md={4} mdOffset={1}>
-              <div>Hello, {this.state.user.email}</div>
-              <ProfileForm
-                profile={this.state.profile}/>
-            </Col>
+            <div>
+              <Col xs={12} md={4} mdOffset={1}>
+                <div>Hello, {this.state.user.email}</div>
+                <ProfileForm profile={this.state.profile}/>
+              </Col>
+              <Col xs={12} md={3}>
+                <PhotoForm profile={this.state.profile}/>
+              </Col>
+            </div>
           )}
         </Row>
       </Grid>

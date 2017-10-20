@@ -7,7 +7,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
     authorize @profile
+    binding.pry
     if @profile.update(profile_params)
       render :show
     else
@@ -18,7 +20,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :age, :sex)
+    params.require(:profile).permit(:first_name, :last_name, :age, :sex, :avatar)
   end
 
   def set_profile

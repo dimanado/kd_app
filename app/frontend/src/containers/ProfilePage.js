@@ -5,7 +5,7 @@ import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
-import PhotoForm from 'PhotoForm'
+import PhotoForm from 'PhotoForm';
 
 class ProfilePage extends Component {
   constructor(props) {

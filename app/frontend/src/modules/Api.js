@@ -26,7 +26,7 @@ export default class Api {
   }
 
   static profileUpdate(id, profile, userTokens) {
-    if(profile.sex) {
+    if (profile.sex) {
       profile.sex = profile.sex.value;
     }
 

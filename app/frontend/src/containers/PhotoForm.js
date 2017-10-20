@@ -1,23 +1,35 @@
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
 import Image from 'Image';
+import Api from 'Api';
+import Auth from 'Auth';
 
-class PhotoForm extends React.Component {
+class PhotoForm extends Component {
   constructor() {
     super();
-    this.state = { files: [] }
+    this.state = { files: [] };
   }
 
   onDrop(files) {
-    this.setState({
-      files
-    });
+    this.setState({ files });
   }
 
   avatarSubmit() {
     const avatar = this.state.files[0];
-    if(avatar) {
-      Image.sendBase64(avatar, this.props.profile.userId)
+    if (avatar) {
+      Image.readBase64(avatar)
+      .then(avatar => {
+        Api.profileUpdate(this.props.profile.userId, { avatar }, Auth.getUserTokens())
+        .then(response => {
+          alert('Data updated.');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
   }
 
@@ -26,12 +38,12 @@ class PhotoForm extends React.Component {
       <section>
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop.bind(this)}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
+            <p>
+              Try dropping some files here, or click to select files to upload.
+            </p>
           </Dropzone>
         </div>
-        <button onClick={this.avatarSubmit.bind(this)}>
-          Update avatar
-        </button>
+        <button onClick={this.avatarSubmit.bind(this)}>Update avatar</button>
       </section>
     );
   }

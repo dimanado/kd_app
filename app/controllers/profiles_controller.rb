@@ -17,9 +17,7 @@ class ProfilesController < ApplicationController
 
   def create_company
     @company = Company.create_company(company_params, current_user, params[:company][:status])
-    if !@company.valid?
-      render_error_messages(@company)
-    end
+    render_error_messages(@company) unless @company.valid?
   end
 
   private

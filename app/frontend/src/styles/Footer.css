@@ -1,23 +1,24 @@
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 145px;
-  padding: 20px 0 40px;
+.Footer {
+  padding-bottom: 40px;
+  background-color: #111f53;
 }
 
-footer .list-inline {
+.Footer hr {
+  margin-top: 0;
+}
+
+.Footer .list-inline {
   margin: 0;
   padding: 0;
 }
 
-footer .list-inline a {
+.Footer .list-inline a {
   color: #1d348b;
 }
 
-footer .copyright {
-  font-size: 14px;
+.Footer .copyright {
+  font-size: 16px;
   margin-bottom: 0;
   text-align: center;
+  color: #fff;
 }

@@ -3,30 +3,30 @@ import { Route } from "react-router-dom";
 import routes from "routes";
 import Header from "Header";
 import Footer from "Footer";
+import Main from "Main";
 import SocialIcons from "SocialIcons";
 import SearchForm from "SearchForm";
-import UserInfo from "UserInfo";
+import UserLinks from "UserLinks";
 import "App.css";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="PIApp">
         <Header>
           <SocialIcons large className="d-flex justify-content-between" />
           <SearchForm />
-          <UserInfo />
+          <UserLinks />
         </Header>
 
-        {routes.map((route, i) => {
-          console.log(route);
-          return <Route {...route} key={i} />;
-        })}
+        <Main>
+          {routes.map((route, i) => {
+            return <Route {...route} key={i} />;
+          })}
+        </Main>
 
         <Footer />
       </div>
     );
   }
 }
-
-export default App;

@@ -1,0 +1,12 @@
+.UserLinks,
+.UserLinks a {
+  color: white;
+}
+
+.UserLinks a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.UserLinks .separator {
+  margin: 0 10px;
+}

@@ -1,6 +1,7 @@
-html {
-  position: relative;
-  padding-bottom: 145px;
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {

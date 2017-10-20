@@ -8,7 +8,7 @@ import Api from "Api";
 import Auth from "Auth";
 import User from "User";
 
-const SignUpForm = withFormik({
+export default withFormik({
   mapPropsToValues: props => ({
     email: "",
     password: "",
@@ -113,5 +113,3 @@ const SignUpForm = withFormik({
     </Form>
   );
 });
-
-export default SignUpForm;

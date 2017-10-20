@@ -3,7 +3,8 @@ import React from "react";
 export default function IssueContent() {
   return (
     <div>
-      <p>№1(1)/2017</p>
+      <div>№1(1)/2017</div>
+      <br />
 
       <div>
         <b>КОЛОНКА РЕДАКТОРА</b>

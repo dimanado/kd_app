@@ -8,7 +8,12 @@ export default function Committees() {
   return (
     <ul className="Committees list-unstyled text-left d-flex">
       <li>
-        <a href="http://sk.gov.by/ru/" className="Committees-link">
+        <a
+          href="http://sk.gov.by/ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="Committees-link"
+        >
           <img
             src={skrb}
             alt="Следственный комитет Республики Беларусь"
@@ -18,7 +23,12 @@ export default function Committees() {
         </a>
       </li>
       <li>
-        <a href="http://sledcom.ru/" className="Committees-link">
+        <a
+          href="http://sledcom.ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="Committees-link"
+        >
           <img
             src={skrf}
             alt="Следственный комитет Российской Федерации"
@@ -28,7 +38,12 @@ export default function Committees() {
         </a>
       </li>
       <li>
-        <a href="http://www.ccc.am/ru/" className="Committees-link">
+        <a
+          href="http://www.ccc.am/ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="Committees-link"
+        >
           <img
             src={skarm}
             alt="Специальная следственная служба Республики Армения"

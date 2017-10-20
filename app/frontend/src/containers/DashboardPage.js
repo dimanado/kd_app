@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 import User from "User";
 
-class DashboardPage extends Component {
+export default class DashboardPage extends Component {
   componentWillMount() {
     this.setState({
       user: User.getUserInfo()
@@ -19,5 +19,3 @@ class DashboardPage extends Component {
     );
   }
 }
-
-export default DashboardPage;

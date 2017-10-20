@@ -1,7 +1,6 @@
 .Menu {
-  margin-bottom: 35px;
+  margin-bottom: 50px;
   padding: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .Menu .nav-item {
@@ -28,7 +27,7 @@
   background-image: url("../images/board.jpg");
 }
 
-.Menu .nav-item.EventsAndNewsPage {
+.Menu .nav-item.EventsPage {
   background-image: url("../images/events.jpg");
 }
 
@@ -95,12 +94,16 @@
 
 .Menu.Menu--aside {
   flex-direction: column;
+  margin-bottom: 0;
 }
 
 .Menu.Menu--aside .nav-item {
   height: 100px;
   width: 100%;
   flex-basis: auto;
+}
+
+.Menu.Menu--aside .nav-item:not(:last-child) {
   margin: 0 0 15px 0;
 }
 

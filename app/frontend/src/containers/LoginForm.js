@@ -8,7 +8,7 @@ import Api from "Api";
 import Auth from "Auth";
 import User from "User";
 
-const LoginForm = withFormik({
+export default withFormik({
   mapPropsToValues: props => ({ email: "", password: "" }),
 
   validationSchema: Yup.object().shape({
@@ -80,5 +80,3 @@ const LoginForm = withFormik({
     </Form>
   );
 });
-
-export default LoginForm;

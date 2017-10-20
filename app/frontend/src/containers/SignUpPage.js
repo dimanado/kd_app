@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Grid, Row, Col } from "react-bootstrap";
 import SignUpForm from "SignUpForm";
 
 class SignUpPage extends Component {
@@ -10,13 +9,13 @@ class SignUpPage extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={4} mdOffset={4}>
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12 col-md-4 mx-auto">
             <SignUpForm handleSubmit={this.handleSubmit} />
-          </Col>
-        </Row>
-      </Grid>
+          </div>
+        </div>
+      </div>
     );
   }
 }

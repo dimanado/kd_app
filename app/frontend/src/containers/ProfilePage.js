@@ -6,7 +6,7 @@ import Auth from "Auth";
 import User from "User";
 import Api from "Api";
 
-class ProfilePage extends Component {
+export default class ProfilePage extends Component {
   constructor(props) {
     super(props);
 
@@ -83,5 +83,3 @@ class ProfilePage extends Component {
     );
   }
 }
-
-export default ProfilePage;

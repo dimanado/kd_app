@@ -1,12 +1,26 @@
 import React from "react";
+import noskevich from "people/noskevich.jpg";
+import "CollegiumContent.css";
 
 export default function CollegiumContent() {
   return (
-    <div>
-      <div>ПРЕДСЕДАТЕЛЬ</div>
-      <div>
-        НОСКЕВИЧ Иван Данилович, Председатель Следственного комитета Республики
-        Беларусь
+    <div className="CollegiumContent">
+      <div className="CollegiumContent-card">
+        <div className="float-left">
+          <img
+            src={noskevich}
+            alt="Носкевич Иван Данилович"
+            title="Носкевич Иван Данилович"
+            className="CollegiumContent-avatar"
+          />
+        </div>
+        <div>
+          <div>ПРЕДСЕДАТЕЛЬ</div>
+          <div>
+            НОСКЕВИЧ Иван Данилович, Председатель Следственного комитета
+            Республики Беларусь
+          </div>
+        </div>
       </div>
       <br />
 

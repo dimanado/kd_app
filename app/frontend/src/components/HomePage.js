@@ -1,9 +1,9 @@
-import React from 'react';
-import Menu from 'Menu';
-import Header from 'Header';
-import Committees from 'Committees';
+import React from "react";
+import Menu from "Menu";
+import Header from "Header";
+import Committees from "Committees";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="container">
       <div className="row">

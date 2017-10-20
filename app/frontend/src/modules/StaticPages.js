@@ -33,7 +33,7 @@ const staticPages = [
   },
 
   {
-    componentName: "ForAuthorsContent",
+    componentName: "ForAuthorsPage",
     linkText: "Авторам",
     pageTitle: "Авторам",
     href: "/for-authors",
@@ -41,7 +41,7 @@ const staticPages = [
   },
 
   {
-    componentName: "EventsContent",
+    componentName: "EventsPage",
     linkText: "События и новости",
     pageTitle: "События и новости",
     href: "/events",
@@ -49,7 +49,7 @@ const staticPages = [
   },
 
   {
-    componentName: "IssueContent",
+    componentName: "IssuePage",
     linkText: "В номере",
     pageTitle: "В номере",
     href: "/issue",
@@ -57,7 +57,7 @@ const staticPages = [
   },
 
   {
-    componentName: "PolicyContent",
+    componentName: "PolicyPage",
     linkText: "Редакционная политика",
     pageTitle: "Редакционная политика",
     href: "/policy",

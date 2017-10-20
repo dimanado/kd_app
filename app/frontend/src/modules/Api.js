@@ -34,12 +34,12 @@ export default class Api {
     });
   }
 
-  static createCompany(profileId, params, userTokens) {
+  static createCompany(profileId, company, userTokens) {
     return axios({
       method: 'POST',
       url: `api/profiles/${profileId}/create_company`,
       headers: userTokens,
-      data: { company: convertObjectKeys(params, toSnakeCase) }
+      data: { company: convertObjectKeys(company, toSnakeCase) }
     });
   }
 }

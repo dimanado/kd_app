@@ -56,6 +56,10 @@ class ProfilePage extends Component {
     });
   }
 
+  redirectToProfile = () => {
+    this.props.history.push("/profile");
+  }
+
   render() {
     return(
       <Grid>
@@ -73,7 +77,7 @@ class ProfilePage extends Component {
             <Col xs={12} md={4}>
               <div>Hello, {this.state.user.email}</div>
               <Route exact path={`${this.match.url}/edit`} component={ProfileForm} />
-              <Route exact path={`${this.match.url}/create-company`} component={CreateCompanyForm}/>
+              <Route exact path={`${this.match.url}/create-company`} render={() => <CreateCompanyForm handleSubmit={this.redirectToProfile} />}/>
             </Col>
             <Col xs={12} md={4}>
               <CompanyCollection companies={this.state.userCompanies} />

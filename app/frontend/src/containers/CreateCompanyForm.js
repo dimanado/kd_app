@@ -57,6 +57,7 @@ const CreateCompanyForm = withFormik({
 
   return (
     <Form>
+      <h2>Create company</h2>
       <FieldGroup
         id="formControlsName"
         label="Title"

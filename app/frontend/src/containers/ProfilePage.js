@@ -5,10 +5,15 @@ import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
+import CreateCompanyForm from 'CreateCompanyForm';
+import { Route } from 'react-router-dom';
+
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
+
+    this.match = props.match;
 
     this.state = {
       profile: {
@@ -51,14 +56,15 @@ class ProfilePage extends Component {
           <Row>
             <Col xs={12} md={4}>
               <div className="well">
-                <a href="/create-company"><Button bsSize="large" block>Create company</Button></a>
+                <a href={`${this.match.url}/edit`}><Button bsSize="large" block>Edit profile</Button></a>
+                <a href={`${this.match.url}/create-company`}><Button bsSize="large" block>Create company</Button></a>
                 <a href="/join-to-company"><Button bsSize="large" block>Join to company</Button></a>
               </div>
             </Col>
             <Col xs={12} md={4}>
               <div>Hello, {this.state.user.email}</div>
-              <ProfileForm
-                profile={this.state.profile}/>
+              <Route exact path={`${this.match.url}/edit`} component={ProfileForm} />
+              <Route exact path={`${this.match.url}/create-company`} component={CreateCompanyForm}/>
             </Col>
             <Col xs={12} md={4}>
               <p>Your companies:</p>

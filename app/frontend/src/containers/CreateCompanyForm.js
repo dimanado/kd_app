@@ -22,7 +22,7 @@ const CreateCompanyForm = withFormik({
   validationSchema: Yup.object().shape({
     title: Yup.string()
       .required('Title is required'),
-    comp_type: Yup.string()
+    compType: Yup.string()
       .required('Comp type is required'),
     status: Yup.string()
       .required('Status is required')

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Route } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
 import MDSpinner from "react-md-spinner";
 import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
@@ -7,11 +8,7 @@ import User from 'User';
 import Api from 'Api';
 import CreateCompanyForm from 'CreateCompanyForm';
 import SidebarLinks from 'SidebarLinks';
-//import CompanyCollection from 'CompanyCollection';
 import ListItems from 'ListItems';
-import { Route } from 'react-router-dom';
-import convertObjectKeys from 'convertObjectKeys';
-import toCamelCase from 'toCamelCase';
 
 
 class ProfilePage extends Component {

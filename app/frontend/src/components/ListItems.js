@@ -8,8 +8,14 @@ export default function ListItems({ items, onItemClick, listTitle, ...props }) {
       <ListGroup>
         {items.map((item, index) => {
           return (
-            <ListGroupItem onClick={onItemClick.bind(this, item)} key={index} className="App-hoverable">{item.title}</ListGroupItem>
-          )
+            <ListGroupItem
+              onClick={onItemClick.bind(this, item)}
+              key={index}
+              className="App-hoverable"
+            >
+              {item.title}
+            </ListGroupItem>
+          );
         })}
       </ListGroup>
     </div>

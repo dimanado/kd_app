@@ -5,15 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+COMPANY_TYPES = [
+  'Индивидуальный предприниматель (ИП)',
+  'Крестьянское (фермерское) хозяйство (КФХ)',
+  'Унитарное предприятие (УП)',
+  'Производственный кооператив (ПК)',
+  'Полное товарищество (ПТ)',
+  'Коммандитное товарищество (КТ)',
+  'Общество с дополнительной ответственностью (ОДО)',
+  'Общество с ограниченной ответственностью (ООО)',
+  'Открытое акционерное общество (ОАО)',
+  'Закрытое акционерное общество (ЗАО)'
+]
 
-ownership_type1 = OwnershipType.find_or_create_by!(name: "Тип владения 1")
-company_type1 = CompanyType.find_or_create_by!(name: "Тип компании 1")
+OWNERSHIP_TYPES = [
+  'Частная собственность',
+  'Государственная собственность',
+  'Общая (долевая) собственность'
+]
 
+COMPANY_TYPES.each do |company_type_name|
+  CompanyType.find_or_create_by(name: company_type_name)
+end
 
-company1 = Company.find_or_create_by!(title: "Спорт это жизнь",
-                                      comp_type: "Частная",
-                                      company_type_id: ownership_type1.id,
-                                      ownership_type_id: company_type1.id)
+OWNERSHIP_TYPES.each do |ownership_type_name|
+  OwnershipType.find_or_create_by(name: ownership_type_name)
+end
 
 
 SERVICE_KINDS =

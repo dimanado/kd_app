@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col} from 'react-bootstrap';
-import MDSpinner from "react-md-spinner";
+import { Grid, Row, Col } from 'react-bootstrap';
+import MDSpinner from 'react-md-spinner';
 import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
@@ -13,12 +13,12 @@ class ProfilePage extends Component {
 
     this.state = {
       profile: {
-        firstName: "",
-        lastName: "",
+        firstName: '',
+        lastName: '',
         age: 0,
-        sex: "",
+        sex: '',
         userId: 0,
-        avatar: ""
+        avatar: ''
       },
       user: User.getUserInfo(),
       spinner: true
@@ -27,7 +27,7 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     Api.profileShow(this.state.user.id, Auth.getUserTokens())
-    .then(({data}) => {
+    .then(({ data }) => {
       const profile = {
         firstName: data.first_name,
         lastName: data.last_name,
@@ -36,9 +36,9 @@ class ProfilePage extends Component {
         userId: this.state.user.id,
         avatar: data.avatar
       };
-      this.setState({profile, spinner: false});
+      this.setState({ profile, spinner: false });
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
   }
@@ -51,13 +51,13 @@ class ProfilePage extends Component {
     .catch(error => {
       console.log(error);
     });
-  }
+  };
 
   render() {
-    return(
+    return (
       <Grid>
         <Row>
-          { this.state.spinner ? (
+          {this.state.spinner ? (
             <Col md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
@@ -65,7 +65,7 @@ class ProfilePage extends Component {
             <div>
               <Col xs={12} md={4} mdOffset={1}>
                 <div>Hello, {this.state.user.email}</div>
-                <ProfileForm profile={this.state.profile}/>
+                <ProfileForm profile={this.state.profile} />
               </Col>
               <Col xs={12} md={3}>
                 <ImageForm

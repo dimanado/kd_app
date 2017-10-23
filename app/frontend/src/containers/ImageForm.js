@@ -7,25 +7,31 @@ import 'DropZone.css';
 class ImageForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { files: [],
-      currentAvatar: this.props.profile.avatar};
+
+    this.state = {
+      files: [],
+      currentAvatar: this.props.profile.avatar
+    };
   }
 
   onDrop(files) {
-    this.setState({ files,
-      currentAvatar: files[0].preview });
+    this.setState({
+      files,
+      currentAvatar: files[0].preview
+    });
   }
 
   submitImage() {
     const avatar = this.state.files[0];
     if (avatar) {
-      convertImage.readBase64(avatar)
-      .then(avatar => {
-        this.props.handleSubmit(avatar, this.props.profile.userId)
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      convertImage
+        .readBase64(avatar)
+        .then(avatar => {
+          this.props.handleSubmit(avatar, this.props.profile.userId);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 
@@ -34,9 +40,7 @@ class ImageForm extends Component {
       <section>
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop.bind(this)}>
-            <img
-              src={this.state.currentAvatar} alt="User Avatar"
-            />
+            <img src={this.state.currentAvatar} alt="User Avatar" />
           </Dropzone>
         </div>
         <ButtonToolbar>

@@ -10,12 +10,12 @@ import Config from 'config';
 
 const ProfileForm = withFormik({
 
-  mapPropsToValues: (props) => ({firstName: props.profile.firstName,
+  mapPropsToValues: (props) => ({
+    firstName: props.profile.firstName,
     lastName: props.profile.lastName,
     age: props.profile.age,
     sex: props.profile.sex
   }),
-
 
   validationSchema: Yup.object().shape({
     firstName: Yup.string().matches(/^[a-zA-Z]*$/, 'First name should only have letters'),

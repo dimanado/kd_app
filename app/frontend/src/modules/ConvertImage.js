@@ -1,4 +1,4 @@
-export default class Image {
+export default class ConvertImage {
   static readBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

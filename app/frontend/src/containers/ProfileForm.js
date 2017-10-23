@@ -2,14 +2,20 @@ import React from 'react';
 import { Form, withFormik } from 'formik';
 import { Button } from 'react-bootstrap';
 import FieldGroup from 'FieldGroup';
-import FieldSelect from 'FieldSelect';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
+import SelectField from 'SelectField';
+import Config from 'config';
 
 const ProfileForm = withFormik({
 
-  mapPropsToValues: (props) => ({ ...props.profile }),
+  mapPropsToValues: (props) => ({firstName: props.profile.firstName,
+    lastName: props.profile.lastName,
+    age: props.profile.age,
+    sex: props.profile.sex
+  }),
+
 
   validationSchema: Yup.object().shape({
     firstName: Yup.string().matches(/^[a-zA-Z]*$/, 'First name should only have letters'),
@@ -76,15 +82,15 @@ const ProfileForm = withFormik({
         onBlur={handleBlur}
       />
 
-      <FieldSelect
+      <SelectField
         id="formControlsSex"
         label="Sex"
         name="sex"
-        options={[{ value: 'female', label: 'female' }, { value: 'male', label: 'male' }]}
-        onChange={setFieldValue}
-        onBlur={setFieldTouched}
         value={values.sex}
         error={touched.sex && errors.sex}
+        options={Config.sex}
+        onChange={handleChange}
+        onBlur={handleBlur}
       />
 
       <Button type="submit" disabled={isSubmitting}>

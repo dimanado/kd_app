@@ -7,9 +7,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-
     authorize @profile
-    binding.pry
     if @profile.update(profile_params)
       render :show
     else

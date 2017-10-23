@@ -26,10 +26,6 @@ export default class Api {
   }
 
   static profileUpdate(id, profile, userTokens) {
-    if (profile.sex) {
-      profile.sex = profile.sex.value;
-    }
-
     return axios({
       method: 'put',
       url: `api/profiles/${id}`,

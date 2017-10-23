@@ -15,7 +15,7 @@ gem 'puma', '~> 3.7'
 gem 'pundit'
 gem 'rails', '5.1.4'
 gem 'carrierwave-base64'
-
+gem 'config'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

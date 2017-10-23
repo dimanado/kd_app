@@ -6,6 +6,7 @@
     "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "formik": "^0.9.3",
+    "lodash.omit": "^4.5.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",

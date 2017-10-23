@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
-import convertImage from 'ConvertImage';
-import 'DropZone.css';
+import Image from 'Image';
+import 'ImageForm.css';
 
 class ImageForm extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class ImageForm extends Component {
 
     this.state = {
       files: [],
-      currentAvatar: this.props.profile.avatar
+      currentAvatar: this.props.avatar
     };
   }
 
@@ -24,14 +24,13 @@ class ImageForm extends Component {
   submitImage() {
     const avatar = this.state.files[0];
     if (avatar) {
-      convertImage
-        .readBase64(avatar)
-        .then(avatar => {
-          this.props.handleSubmit(avatar, this.props.profile.userId);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      Image.readBase64(avatar)
+      .then(avatar => {
+        this.props.handleSubmit(avatar);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
   }
 

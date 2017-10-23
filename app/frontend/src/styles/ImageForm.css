@@ -1,0 +1,21 @@
+.dropzone {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}
+
+.dropzone > div {
+  border: 0 !important;
+}
+
+.dropzone img {
+  height: 200px;
+  width: 200px;
+}
+
+.btn-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}

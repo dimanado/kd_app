@@ -27,14 +27,10 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     Api.profileShow(this.state.user.id, Auth.getUserTokens())
-    .then(({ data }) => {
+    .then(data => {
       const profile = {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        age: data.age,
-        sex: data.sex,
-        userId: this.state.user.id,
-        avatar: data.avatar
+        ...data,
+        userId: this.state.user.id
       };
       this.setState({ profile, spinner: false });
     })
@@ -43,8 +39,8 @@ class ProfilePage extends Component {
     });
   }
 
-  handleSubmit = (image, userId) => {
-    Api.profileUpdate(userId, { avatar: image }, Auth.getUserTokens())
+  handleSubmit = (avatar) => {
+    Api.profileUpdate(this.state.user.id, { avatar }, Auth.getUserTokens())
     .then(response => {
       alert('Data updated.');
     })
@@ -69,7 +65,7 @@ class ProfilePage extends Component {
               </Col>
               <Col xs={12} md={3}>
                 <ImageForm
-                  profile={this.state.profile}
+                  avatar={this.state.profile.avatar}
                   handleSubmit={this.handleSubmit}
                 />
               </Col>

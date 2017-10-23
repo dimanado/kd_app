@@ -7,14 +7,11 @@ import Api from 'Api';
 import Auth from 'Auth';
 import SelectField from 'SelectField';
 import Config from 'config';
+import omit from 'lodash.omit';
 
 const ProfileForm = withFormik({
-
   mapPropsToValues: (props) => ({
-    firstName: props.profile.firstName,
-    lastName: props.profile.lastName,
-    age: props.profile.age,
-    sex: props.profile.sex
+    ...omit(props.profile, ['avatar'])
   }),
 
   validationSchema: Yup.object().shape({
@@ -54,7 +51,7 @@ const ProfileForm = withFormik({
         label="First name"
         type="input"
         name="firstName"
-        value={values.firstName}
+        value={values.firstName || ''}
         error={touched.firstName && errors.firstName}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -64,7 +61,7 @@ const ProfileForm = withFormik({
         label="Last name"
         type="input"
         name="lastName"
-        value={values.lastName}
+        value={values.lastName || ''}
         error={touched.lastName && errors.lastName}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -74,7 +71,7 @@ const ProfileForm = withFormik({
         label="Age"
         type="input"
         name="age"
-        value={values.age}
+        value={values.age || ''}
         error={touched.age && errors.age}
         onChange={handleChange}
         onBlur={handleBlur}

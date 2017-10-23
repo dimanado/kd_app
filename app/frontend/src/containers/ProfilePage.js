@@ -7,8 +7,11 @@ import User from 'User';
 import Api from 'Api';
 import CreateCompanyForm from 'CreateCompanyForm';
 import SidebarLinks from 'SidebarLinks';
-import CompanyCollection from 'CompanyCollection';
+//import CompanyCollection from 'CompanyCollection';
+import ListItems from 'ListItems';
 import { Route } from 'react-router-dom';
+import convertObjectKeys from 'convertObjectKeys';
+import toCamelCase from 'toCamelCase';
 
 
 class ProfilePage extends Component {
@@ -16,7 +19,7 @@ class ProfilePage extends Component {
     super(props);
 
     this.match = props.match;
-    
+
     this.sidebarLinks = [
       {
         path: `${this.match.url}/edit`,
@@ -60,6 +63,10 @@ class ProfilePage extends Component {
     this.props.history.push("/profile");
   }
 
+  onCompanyClick = (company) => {
+    // TODO: Show edit company form
+  }
+
   render() {
     return(
       <Grid>
@@ -80,7 +87,7 @@ class ProfilePage extends Component {
               <Route exact path={`${this.match.url}/create-company`} render={() => <CreateCompanyForm handleSubmit={this.redirectToProfile} />}/>
             </Col>
             <Col xs={12} md={4}>
-              <CompanyCollection companies={this.state.userCompanies} />
+              <ListItems onItemClick={this.onCompanyClick} items={this.state.userCompanies} listTitle="Your companies" />
             </Col>
           </Row>
         )}

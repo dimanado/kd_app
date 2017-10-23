@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import Dropzone from 'react-dropzone';
 import convertImage from 'ConvertImage';
-import Api from 'Api';
-import Auth from 'Auth';
 import 'DropZone.css';
 
 class ImageForm extends Component {
@@ -37,7 +35,7 @@ class ImageForm extends Component {
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop.bind(this)}>
             <img
-              src={this.state.currentAvatar}
+              src={this.state.currentAvatar} alt="User Avatar"
             />
           </Dropzone>
         </div>

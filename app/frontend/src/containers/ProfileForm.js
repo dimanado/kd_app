@@ -44,9 +44,7 @@ const ProfileForm = withFormik({
     isSubmitting,
     handleChange,
     handleBlur,
-    touched,
-    setFieldValue,
-    setFieldTouched
+    touched
     } = props;
 
   return (

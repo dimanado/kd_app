@@ -87,17 +87,32 @@ class ProfilePage extends Component {
           <Row>
             <Col xs={12} md={4}>
               <SidebarLinks links={this.sidebarLinks} />
-              <ListItems onItemClick={this.onCompanyClick} items={this.state.userCompanies} listTitle="Your companies" />
+              {this.state.userCompanies.length > 0 && (
+                <ListItems
+                  onItemClick={this.onCompanyClick}
+                  items={this.state.userCompanies}
+                  listTitle="Your companies"
+                />
+              )}
             </Col>
             <Col xs={12} md={8}>
-              <Route exact path={`${this.match.url}/edit`} render={() =>
-                <EditProfile
-                  email={this.state.user.email}
-                  profile={this.state.profile}
-                  handleSubmit={this.handleSubmit}
-                />
-                } />
-              <Route exact path={`${this.match.url}/create-company`} render={() => <CreateCompanyForm handleSubmit={this.redirectToProfile} />}/>
+              <Route
+                exact
+                path={`${this.match.url}/edit`}
+                render={() => (
+                  <EditProfile
+                    profile={this.state.profile}
+                    handleSubmit={this.handleSubmit}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={`${this.match.url}/create-company`}
+                render={() => (
+                  <CreateCompanyForm handleSubmit={this.redirectToProfile} />
+                )}
+              />
             </Col>
           </Row>
         )}

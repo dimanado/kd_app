@@ -39,7 +39,11 @@ class ImageForm extends Component {
       <section>
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop.bind(this)}>
-            <img src={this.state.currentAvatar} alt="User Avatar" />
+            <img
+              src={this.state.currentAvatar}
+              alt="User Avatar"
+              className="form-control"
+            />
           </Dropzone>
         </div>
         <ButtonToolbar>

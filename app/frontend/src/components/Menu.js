@@ -15,13 +15,7 @@ export default function Menu({ showMain, aside, currentRoute }) {
 
       <div className="collapse navbar-collapse" id="navbarResponsive">
         <ul className="navbar-nav mx-auto">
-          {showMain && (
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Главная
-              </a>
-            </li>
-          )}
+          {showMain && <MenuItem linkText="Главная" href="/" />}
           {staticPages.map(
             (page, i) =>
               currentRoute !== page.href &&

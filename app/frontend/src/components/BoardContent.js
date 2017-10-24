@@ -1,8 +1,16 @@
 import React from "react";
+import board from "board.jpg";
 
 export default function BoardContent() {
   return (
     <div>
+      <img
+        src={board}
+        alt="Редакционный совет"
+        title="Редакционный совет"
+        className="ContentPage-head-image"
+      />
+      <br />
       <div>ПРЕДСЕДАТЕЛЬ</div>
       <div>
         ГРУНТОВ Игорь Олегович, д. ю. н., доцент заведующий кафедрой уголовного

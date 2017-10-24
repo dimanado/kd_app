@@ -1,8 +1,16 @@
 import React from "react";
+import forAuthors from "for-authors.jpg";
 
 export default function ForAuthorsContent() {
   return (
     <div>
+      <img
+        src={forAuthors}
+        alt="Авторам"
+        title="Авторам"
+        className="ContentPage-head-image"
+      />
+      <br />
       <div>
         Принимается к печати оригинальный материал, не опубликованный ранее.
       </div>

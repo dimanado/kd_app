@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "UserLinks.css";
 
 export default function UserLinks() {
   return (
     <div className="UserLinks text-right">
-      <a href="/login">Войти</a>
+      <Link to="/login">Войти</Link>
       <span className="separator">|</span>
-      <a href="/signup">Регистрация</a>
+      <Link to="/signup">Регистрация</Link>
     </div>
   );
 }

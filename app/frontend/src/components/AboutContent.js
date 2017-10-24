@@ -1,8 +1,16 @@
 import React from "react";
+import about from "about.jpg";
 
 export default function AboutContent() {
   return (
     <div>
+      <img
+        src={about}
+        alt="О журнале"
+        title="О журнале"
+        className="ContentPage-head-image"
+      />
+      <br />
       <div>Издается с 2017 года. Выходит 1 раз в полугодие.</div>
       <br />
       <div>Учредитель – Следственный комитет Республики Беларусь.</div>

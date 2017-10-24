@@ -6,7 +6,7 @@ import skarm from "skarm.png";
 
 export default function Committees() {
   return (
-    <ul className="Committees list-unstyled text-left d-flex">
+    <ul className="Committees list-unstyled">
       <li>
         <a
           href="http://sk.gov.by/ru/"

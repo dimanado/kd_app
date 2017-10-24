@@ -1,4 +1,7 @@
 .Committees {
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
 
 .Committees li:not(:last-child) {

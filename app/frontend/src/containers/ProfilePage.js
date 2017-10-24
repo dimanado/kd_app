@@ -58,6 +58,7 @@ class ProfilePage extends Component {
 
   redirectToProfile = () => {
     this.props.history.push("/profile");
+    this.componentDidMount();
   }
 
   onCompanyClick = (company) => {

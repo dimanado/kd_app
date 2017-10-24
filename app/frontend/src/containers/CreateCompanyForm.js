@@ -1,6 +1,6 @@
 import React from 'react';
 import { withFormik } from 'formik';
-import { Button } from 'react-bootstrap';
+import { Button, Checkbox } from 'react-bootstrap';
 import { Form } from 'formik';
 import FieldGroup from 'FieldGroup';
 import SelectField from 'SelectField';
@@ -16,7 +16,8 @@ const CreateCompanyForm = withFormik({
     ownershipTypeId: '1',
     companyTypeId: '1',
     status: 0,
-    userStatus: ''
+    userStatus: '',
+    is_sole: false
   }),
 
   validationSchema: Yup.object().shape({
@@ -108,6 +109,9 @@ const CreateCompanyForm = withFormik({
         onChange={handleChange}
         onBlur={handleBlur}
       />
+      <Checkbox name="is_sole" value={values.is_sole}>
+        is sole?
+      </Checkbox>
 
       <Button type="submit" disabled={isSubmitting}>
         Create

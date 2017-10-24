@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:title, :ownership_type_id, :company_type_id, :status)
+    params.require(:company).permit(:title, :ownership_type_id, :company_type_id, :status, :is_sole)
   end
 
   def set_profile

@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import MDSpinner from 'react-md-spinner';
-import ProfileForm from 'ProfileForm';
+import MDSpinner from "react-md-spinner";
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
-import ImageForm from 'ImageForm';
+import CreateCompanyForm from 'CreateCompanyForm';
+import SidebarLinks from 'SidebarLinks';
+import ListItems from 'ListItems';
+import EditProfile from 'EditProfile';
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
+
+    this.match = props.match;
+
+    this.sidebarLinks = [
+      {
+        path: `${this.match.url}/edit`,
+        name: 'Edit Profile'
+      },
+      {
+        path: `${this.match.url}/create-company`,
+        name: 'Create Company'
+      }
+    ];
 
     this.state = {
       profile: {
@@ -21,6 +37,7 @@ class ProfilePage extends Component {
         avatar: ''
       },
       user: User.getUserInfo(),
+      userCompanies: [],
       spinner: true
     };
   }
@@ -32,7 +49,7 @@ class ProfilePage extends Component {
         ...data,
         userId: this.state.user.id
       };
-      this.setState({ profile, spinner: false });
+      this.setState({ profile, spinner: false, userCompanies: data.companies });
     })
     .catch(error => {
       console.log(error);
@@ -49,29 +66,41 @@ class ProfilePage extends Component {
     });
   };
 
+  redirectToProfile = () => {
+    this.props.history.push("/profile");
+  }
+
+  onCompanyClick = (company) => {
+    // TODO: Show edit company form
+  }
+
   render() {
     return (
       <Grid>
-        <Row>
-          {this.state.spinner ? (
+        {this.state.spinner ? (
+          <Row>
             <Col md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
-          ) : (
-            <div>
-              <Col xs={12} md={4} mdOffset={1}>
-                <div>Hello, {this.state.user.email}</div>
-                <ProfileForm profile={this.state.profile} />
-              </Col>
-              <Col xs={12} md={3}>
-                <ImageForm
-                  avatar={this.state.profile.avatar}
+          </Row>
+        ) : (
+          <Row>
+            <Col xs={12} md={4}>
+              <SidebarLinks links={this.sidebarLinks} />
+              <ListItems onItemClick={this.onCompanyClick} items={this.state.userCompanies} listTitle="Your companies" />
+            </Col>
+            <Col xs={12} md={8}>
+              <Route exact path={`${this.match.url}/edit`} render={() =>
+                <EditProfile
+                  email={this.state.user.email}
+                  profile={this.state.profile}
                   handleSubmit={this.handleSubmit}
                 />
-              </Col>
-            </div>
-          )}
-        </Row>
+                } />
+              <Route exact path={`${this.match.url}/create-company`} render={() => <CreateCompanyForm handleSubmit={this.redirectToProfile} />}/>
+            </Col>
+          </Row>
+        )}
       </Grid>
     );
   }

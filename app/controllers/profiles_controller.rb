@@ -15,10 +15,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def create_company
+    @company = Company.create_company(company_params, current_user, params[:company][:status])
+    render_error_messages(@company) unless @company.valid?
+  end
+
   private
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :age, :sex, :avatar)
+  end
+
+  def company_params
+    params.require(:company).permit(:title, :ownership_type_id, :company_type_id, :comp_type)
   end
 
   def set_profile

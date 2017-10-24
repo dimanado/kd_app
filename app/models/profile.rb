@@ -3,3 +3,5 @@ class Profile < ApplicationRecord
 
   mount_base64_uploader :avatar, AvatarUploader
 end
+
+

@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "avatar#{file.size}.#{file.extension}"
+    "avatar#{file.size}.#{file.extension}" if file.present?
   end
 
   def default_url(*args)

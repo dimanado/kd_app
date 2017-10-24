@@ -9,4 +9,21 @@
 #
 
 class Company < ApplicationRecord
+  belongs_to :ownership_type
+  belongs_to :company_type
+
+  has_many :company_representatives, dependent: :destroy
+  has_many :users, through: :company_representatives
+
+  validates :title, uniqueness: true
+  validates :title, :ownership_type, :company_type, :comp_type, presence: true
+
+  def self.create_company(company_params, current_user, status)
+    company = nil
+    transaction do
+      company = create(company_params)
+      CompanyRepresentative.create(status: status, user: current_user, company: company)
+    end
+    company
+  end
 end

@@ -15,8 +15,10 @@ class Company < ApplicationRecord
   has_many :company_representatives, dependent: :destroy
   has_many :users, through: :company_representatives
 
+  enum status: [ :active, :archived ]
+
   validates :title, uniqueness: true
-  validates :title, :ownership_type, :company_type, :comp_type, presence: true
+  validates :title, :ownership_type, :company_type, presence: true
 
   def self.create_company(company_params, current_user, status)
     company = nil

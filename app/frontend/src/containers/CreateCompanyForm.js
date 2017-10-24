@@ -15,15 +15,15 @@ const CreateCompanyForm = withFormik({
     title: '',
     ownershipTypeId: '1',
     companyTypeId: '1',
-    compType: '',
-    status: ''
+    status: 0,
+    userStatus: ''
   }),
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
       .required('Title is required'),
-    compType: Yup.string()
-      .required('Comp type is required'),
+    userStatus: Yup.string()
+      .required('You Status in Company is required'),
     status: Yup.string()
       .required('Status is required')
   }),
@@ -69,20 +69,22 @@ const CreateCompanyForm = withFormik({
         onBlur={handleBlur}
       />
       <FieldGroup
-        id="formControlsCompType"
-        label="Company type"
-        name="compType"
-        value={values.compType}
-        error={touched.compType && errors.compType}
+        id="formControlsName"
+        label="You Status in Company"
+        placeholder="you status"
+        name="userStatus"
+        value={values.userStatus}
+        error={touched.userStatus && errors.userStatus}
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <FieldGroup
-        id="formControlsCompType"
-        label="Status"
+      <SelectField
+        id="formControlsStatus"
+        label="Company Status"
         name="status"
         value={values.status}
         error={touched.status && errors.status}
+        options={Config.companyStatuses}
         onChange={handleChange}
         onBlur={handleBlur}
       />

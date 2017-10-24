@@ -1,4 +1,4 @@
-json.extract! company, :id, :title, :comp_type
+json.extract! company, :id, :title, :status
 json.ownership_type do
   json.extract! company.ownership_type, :id, :name
 end

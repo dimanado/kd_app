@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
 import MDSpinner from "react-md-spinner";
-import ProfileForm from 'ProfileForm';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
 import CreateCompanyForm from 'CreateCompanyForm';
 import SidebarLinks from 'SidebarLinks';
 import ListItems from 'ListItems';
-
+import EditProfile from 'EditProfile';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -30,9 +29,12 @@ class ProfilePage extends Component {
 
     this.state = {
       profile: {
-        firstName: "",
-        lastName: "",
-        userId: 0
+        firstName: '',
+        lastName: '',
+        age: 0,
+        sex: '',
+        userId: 0,
+        avatar: ''
       },
       user: User.getUserInfo(),
       userCompanies: [],
@@ -42,19 +44,27 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     Api.profileShow(this.state.user.id, Auth.getUserTokens())
-    .then(({data}) => {
+    .then(data => {
       const profile = {
-        firstName: data.first_name,
-        lastName: data.last_name,
+        ...data,
         userId: this.state.user.id
       };
-
-      this.setState({profile, spinner: false, userCompanies: data.companies});
+      this.setState({ profile, spinner: false, userCompanies: data.companies });
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
   }
+
+  handleSubmit = (avatar) => {
+    Api.profileUpdate(this.state.user.id, { avatar }, Auth.getUserTokens())
+    .then(response => {
+      alert('Data updated.');
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  };
 
   redirectToProfile = () => {
     this.props.history.push("/profile");
@@ -65,11 +75,11 @@ class ProfilePage extends Component {
   }
 
   render() {
-    return(
+    return (
       <Grid>
-        { this.state.spinner ? (
+        {this.state.spinner ? (
           <Row>
-            <Col xs={12} md={2} mdOffset={5}>
+            <Col md={2} mdOffset={5}>
               <MDSpinner size={70} />
             </Col>
           </Row>
@@ -77,14 +87,32 @@ class ProfilePage extends Component {
           <Row>
             <Col xs={12} md={4}>
               <SidebarLinks links={this.sidebarLinks} />
+              {this.state.userCompanies.length > 0 && (
+                <ListItems
+                  onItemClick={this.onCompanyClick}
+                  items={this.state.userCompanies}
+                  listTitle="Your companies"
+                />
+              )}
             </Col>
-            <Col xs={12} md={4}>
-              <div>Hello, {this.state.user.email}</div>
-              <Route exact path={`${this.match.url}/edit`} component={ProfileForm} />
-              <Route exact path={`${this.match.url}/create-company`} render={() => <CreateCompanyForm handleSubmit={this.redirectToProfile} />}/>
-            </Col>
-            <Col xs={12} md={4}>
-              <ListItems onItemClick={this.onCompanyClick} items={this.state.userCompanies} listTitle="Your companies" />
+            <Col xs={12} md={8}>
+              <Route
+                exact
+                path={`${this.match.url}/edit`}
+                render={() => (
+                  <EditProfile
+                    profile={this.state.profile}
+                    handleSubmit={this.handleSubmit}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={`${this.match.url}/create-company`}
+                render={() => (
+                  <CreateCompanyForm handleSubmit={this.redirectToProfile} />
+                )}
+              />
             </Col>
           </Row>
         )}

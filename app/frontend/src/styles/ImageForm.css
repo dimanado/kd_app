@@ -1,0 +1,29 @@
+.dropzone {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}
+
+.dropzone > div {
+  border: 0 !important;
+}
+
+.dropzone img {
+  height: 200px;
+  width: 200px;
+  padding: 0;
+  line-height: 200px;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+
+.dropzone img:hover {
+  background-color: #e6e6e6;
+}
+
+.btn-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}

@@ -39,17 +39,15 @@ const SignUpForm = withFormik({
     .then(({data, headers}) => {
       Auth.setUserTokens(headers);
       User.setUserInfo(data.data);
+      setSubmitting(false);
 
       props.handleSubmit();
     })
     .catch(({response}) => {
-      debugger;
       const errorText = response && response.data && response.data.errors && response.data.errors.full_messages[0];
       setErrors({
         email: errorText
       });
-    })
-    .then(() => {
       setSubmitting(false);
     });
   },

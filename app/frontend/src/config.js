@@ -16,7 +16,13 @@ const Config = Object.freeze({
     1: 'Частная собственность',
     2: 'Государственная собственность',
     3: 'Общая (долевая) собственность'
+  },
+
+  sex: {
+    'female': 'female',
+    'male': 'male'
   }
 });
 
 export default Config;
+

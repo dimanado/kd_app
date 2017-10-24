@@ -49,8 +49,11 @@ ActiveRecord::Schema.define(version: 20171013132635) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "first_name", default: ""
-    t.string "last_name", default: ""
+    t.string "first_name"
+    t.string "last_name"
+    t.string "sex"
+    t.string "avatar"
+    t.integer "age"
     t.integer "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

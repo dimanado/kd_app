@@ -5,9 +5,14 @@ import FieldGroup from 'FieldGroup';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
+import SelectField from 'SelectField';
+import Config from 'config';
+import omit from 'lodash.omit';
 
 const ProfileForm = withFormik({
-  mapPropsToValues: (props) => ({ ...props.profile }),
+  mapPropsToValues: (props) => ({
+    ...omit(props.profile, ['avatar'])
+  }),
 
   validationSchema: Yup.object().shape({
     firstName: Yup.string().matches(/^[a-zA-Z]*$/, 'First name should only have letters'),
@@ -46,7 +51,7 @@ const ProfileForm = withFormik({
         label="First name"
         type="input"
         name="firstName"
-        value={values.firstName}
+        value={values.firstName || ''}
         error={touched.firstName && errors.firstName}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -56,8 +61,29 @@ const ProfileForm = withFormik({
         label="Last name"
         type="input"
         name="lastName"
-        value={values.lastName}
+        value={values.lastName || ''}
         error={touched.lastName && errors.lastName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <FieldGroup
+        id="formControlsAge"
+        label="Age"
+        type="input"
+        name="age"
+        value={values.age || ''}
+        error={touched.age && errors.age}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+
+      <SelectField
+        id="formControlsSex"
+        label="Sex"
+        name="sex"
+        value={values.sex || ''}
+        error={touched.sex && errors.sex}
+        options={Config.sex}
         onChange={handleChange}
         onBlur={handleBlur}
       />

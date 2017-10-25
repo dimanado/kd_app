@@ -1,13 +1,12 @@
 import React from 'react';
 import { withFormik } from 'formik';
-import { Button } from 'react-bootstrap';
+import { Button, Checkbox } from 'react-bootstrap';
 import { Form } from 'formik';
 import FieldGroup from 'FieldGroup';
 import SelectField from 'SelectField';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
-import User from 'User';
 import Config from 'config';
 
 const CreateCompanyForm = withFormik({
@@ -15,31 +14,35 @@ const CreateCompanyForm = withFormik({
     title: '',
     ownershipTypeId: '1',
     companyTypeId: '1',
-    compType: '',
-    status: ''
+    status: 0,
+    userStatus: '',
+    is_sole: false
   }),
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
       .required('Title is required'),
-    compType: Yup.string()
-      .required('Comp type is required'),
+    userStatus: Yup.string()
+      .required('You Status in Company is required'),
     status: Yup.string()
       .required('Status is required')
   }),
 
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    Api.createCompany(User.getUserInfo().id, values, Auth.getUserTokens())
+    values.status = parseInt(values.status, 10);
+
+    Api.createCompany(props.userId, values, Auth.getUserTokens())
     .then(({data, headers}) => {
-      props.handleSubmit();
+      setSubmitting(false);
+
+      props.handleSubmit(data);
     })
     .catch(({response}) => {
+      setSubmitting(false);
+
       if (response) {
         setErrors(response.data.errors);
       }
-    })
-    .then(() => {
-      setSubmitting(false);
     });
   },
 
@@ -53,7 +56,6 @@ const CreateCompanyForm = withFormik({
     handleBlur,
     touched
   } = props;
-
 
   return (
     <Form>
@@ -69,20 +71,22 @@ const CreateCompanyForm = withFormik({
         onBlur={handleBlur}
       />
       <FieldGroup
-        id="formControlsCompType"
-        label="Company type"
-        name="compType"
-        value={values.compType}
-        error={touched.compType && errors.compType}
+        id="formControlsName"
+        label="You Status in Company"
+        placeholder="you status"
+        name="userStatus"
+        value={values.userStatus}
+        error={touched.userStatus && errors.userStatus}
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <FieldGroup
-        id="formControlsCompType"
-        label="Status"
+      <SelectField
+        id="formControlsStatus"
+        label="Company Status"
         name="status"
         value={values.status}
         error={touched.status && errors.status}
+        options={Config.companyStatuses}
         onChange={handleChange}
         onBlur={handleBlur}
       />
@@ -106,6 +110,9 @@ const CreateCompanyForm = withFormik({
         onChange={handleChange}
         onBlur={handleBlur}
       />
+      <Checkbox name="is_sole" value={values.is_sole}>
+        is sole?
+      </Checkbox>
 
       <Button type="submit" disabled={isSubmitting}>
         Create

@@ -18,6 +18,11 @@ const Config = Object.freeze({
     3: 'Общая (долевая) собственность'
   },
 
+  companyStatuses: {
+    0: 'активная',
+    1: 'в архиве'
+  },
+  
   sex: {
     'female': 'female',
     'male': 'male'

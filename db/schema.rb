@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 20171013132635) do
 
   create_table "companies", force: :cascade do |t|
     t.string "title", null: false
+    t.integer "status"
+    t.boolean "is_sole"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comp_type"
     t.bigint "company_type_id"
     t.bigint "ownership_type_id"
     t.index ["company_type_id"], name: "index_companies_on_company_type_id"

@@ -25,6 +25,7 @@ const LoginForm = withFormik({
     .then(({data, headers}) => {
       Auth.setUserTokens(headers);
       User.setUserInfo(data.data);
+      setSubmitting(false);
 
       props.handleSubmit();
     })
@@ -33,8 +34,6 @@ const LoginForm = withFormik({
         email: true,
         password: response.data.errors
       });
-    })
-    .then(() => {
       setSubmitting(false);
     });
   },

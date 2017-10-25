@@ -21,7 +21,13 @@ const Config = Object.freeze({
   companyStatuses: {
     0: 'активная',
     1: 'в архиве'
+  },
+  
+  sex: {
+    'female': 'female',
+    'male': 'male'
   }
 });
 
 export default Config;
+

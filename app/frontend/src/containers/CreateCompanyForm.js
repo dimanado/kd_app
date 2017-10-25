@@ -7,7 +7,6 @@ import SelectField from 'SelectField';
 import Yup from 'yup';
 import Api from 'Api';
 import Auth from 'Auth';
-import User from 'User';
 import Config from 'config';
 
 const CreateCompanyForm = withFormik({
@@ -30,17 +29,20 @@ const CreateCompanyForm = withFormik({
   }),
 
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
-    Api.createCompany(User.getUserInfo().id, values, Auth.getUserTokens())
+    values.status = parseInt(values.status, 10);
+
+    Api.createCompany(props.userId, values, Auth.getUserTokens())
     .then(({data, headers}) => {
-      props.handleSubmit();
+      setSubmitting(false);
+
+      props.handleSubmit(data);
     })
     .catch(({response}) => {
+      setSubmitting(false);
+
       if (response) {
         setErrors(response.data.errors);
       }
-    })
-    .then(() => {
-      setSubmitting(false);
     });
   },
 
@@ -54,7 +56,6 @@ const CreateCompanyForm = withFormik({
     handleBlur,
     touched
   } = props;
-
 
   return (
     <Form>

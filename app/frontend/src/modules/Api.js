@@ -37,7 +37,6 @@ export default class Api {
   }
 
   static createCompany(profileId, company, userTokens) {
-    company.status = parseInt(company.status);
     return axios({
       method: 'POST',
       url: `/api/profiles/${profileId}/create_company`,

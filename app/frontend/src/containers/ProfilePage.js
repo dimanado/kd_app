@@ -66,14 +66,21 @@ class ProfilePage extends Component {
     });
   };
 
-  redirectToProfile = () => {
-    this.props.history.push("/profile");
-    this.componentDidMount();
-  }
+  redirectToProfile() {
+    this.props.history.push('/profile');
+  };
+
+  onCompanyAdd = (newCompany) => {
+    this.redirectToProfile();
+
+    this.setState((prevState) => {
+      return { userCompanies: [...prevState.userCompanies, newCompany] };
+    });
+  };
 
   onCompanyClick = (company) => {
     // TODO: Show edit company form
-  }
+  };
 
   render() {
     return (
@@ -111,7 +118,10 @@ class ProfilePage extends Component {
                 exact
                 path={`${this.match.url}/create-company`}
                 render={() => (
-                  <CreateCompanyForm handleSubmit={this.redirectToProfile} />
+                  <CreateCompanyForm
+                    userId={this.state.profile.userId}
+                    handleSubmit={this.onCompanyAdd}
+                  />
                 )}
               />
             </Col>

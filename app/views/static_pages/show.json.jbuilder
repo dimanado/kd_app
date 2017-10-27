@@ -1,0 +1,1 @@
+json.partial! 'static_pages/show', static_page: @static_page

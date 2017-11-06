@@ -9,6 +9,7 @@ import CreateCompanyForm from 'CreateCompanyForm';
 import SidebarLinks from 'SidebarLinks';
 import ListItems from 'ListItems';
 import EditProfile from 'EditProfile';
+import CompanyPage from 'CompanyPage';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -79,6 +80,8 @@ class ProfilePage extends Component {
   };
 
   onCompanyClick = (company) => {
+    this.selectedCompany = company;
+    this.props.history.push(`${this.match.url}/company/${company.id}`);
     // TODO: Show edit company form
   };
 
@@ -121,6 +124,14 @@ class ProfilePage extends Component {
                   <CreateCompanyForm
                     userId={this.state.profile.userId}
                     handleSubmit={this.onCompanyAdd}
+                  />
+                )}
+              />
+              <Route
+                path={`${this.match.url}/company/:companyId`}
+                render={() => (
+                  <CompanyPage
+                    company={this.selectedCompany}
                   />
                 )}
               />

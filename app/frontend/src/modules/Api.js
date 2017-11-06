@@ -33,7 +33,7 @@ export default class Api {
       url: `/api/profiles/${id}`,
       headers: userTokens,
       data: { profile: convertObjectKeys(profile, toSnakeCase) }
-    });
+    }).then(({ data }) => convertObjectKeys(data, toCamelCase));
   }
 
   static createCompany(profileId, company, userTokens) {
@@ -42,6 +42,6 @@ export default class Api {
       url: `/api/profiles/${profileId}/create_company`,
       headers: userTokens,
       data: { company: convertObjectKeys(company, toSnakeCase) }
-    });
+    }).then(({ data }) => convertObjectKeys(data, toCamelCase));
   }
 }

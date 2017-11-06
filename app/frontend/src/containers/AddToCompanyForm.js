@@ -32,7 +32,7 @@ const CreateCompanyForm = withFormik({
     values.status = parseInt(values.status, 10);
 
     Api.createCompany(props.userId, values, Auth.getUserTokens())
-    .then((data) => {
+    .then(({data, headers}) => {
       setSubmitting(false);
 
       props.handleSubmit(data);

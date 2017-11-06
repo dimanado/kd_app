@@ -1,5 +1,14 @@
 export default function convertObjectKeys(obj, fn) {
-  return Object.keys(obj).reduce((acc, key) => Object.assign(acc, {
-    [fn(key)]: obj[key]
-  }), {});
+  if (!(obj instanceof Object)) return obj;
+  if (obj instanceof Array) {
+    return obj.map(item => {
+      return convertObjectKeys(item, fn);
+    })
+  } else {
+    var convertedObject = {};
+    Object.keys(obj).map((key) => {
+      convertedObject[fn(key)] = convertObjectKeys(obj[key], fn);
+    });
+    return convertedObject;
+  }
 }

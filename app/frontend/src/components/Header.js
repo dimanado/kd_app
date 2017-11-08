@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ru from "../locales/ru.json";
 import en from "../locales/en.json";
 import skrb from "skrb.png";
@@ -21,18 +22,22 @@ export default function Header({ hideLogo, locale = "ru", reverse, children }) {
             >
               <div className="col-lg-7">
                 {!hideLogo && (
-                  <img
-                    className="site-logo"
-                    src={skrb}
-                    alt="Следственный комитет Республики Беларусь"
-                    title="Следственный комитет Республики Беларусь"
-                  />
+                  <Link to="/">
+                    <img
+                      className="site-logo"
+                      src={skrb}
+                      alt="Следственный комитет Республики Беларусь"
+                      title="Следственный комитет Республики Беларусь"
+                    />
+                  </Link>
                 )}
                 <div className="site-heading">
                   <h1>
-                    {Header.title}
-                    <br />
-                    <span className="text-wide">{Header.titleSecond}</span>
+                    <Link to="/">
+                      {Header.title}
+                      <br />
+                      <span className="text-wide">{Header.titleSecond}</span>
+                    </Link>
                   </h1>
                   <span className="subheading text-center text-uppercase">
                     {Header.desc}

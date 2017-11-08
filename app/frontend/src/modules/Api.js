@@ -44,4 +44,12 @@ export default class Api {
       data: { company: convertObjectKeys(company, toSnakeCase) }
     });
   }
+
+  static showCompany(companyId, userTokens) {
+    return axios({
+      method: 'get',
+      url: `/api/user/companies/${companyId}`,
+      headers: userTokens
+    });
+  }
 }

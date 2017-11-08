@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
-import MDSpinner from "react-md-spinner";
+import MDSpinner from 'react-md-spinner';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
 import CreateCompanyForm from 'CreateCompanyForm';
 import SidebarLinks from 'SidebarLinks';
-import ListItems from 'ListItems';
 import EditProfile from 'EditProfile';
+import Companies from 'profile/Companies'
+import Company from 'profile/Company'
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class ProfilePage extends Component {
         name: 'Edit Profile'
       },
       {
-        path: `${this.match.url}/create-company`,
-        name: 'Create Company'
+        path: `${this.match.url}/companies`,
+        name: 'Companies'
       }
     ];
 
@@ -78,10 +79,6 @@ class ProfilePage extends Component {
     });
   };
 
-  onCompanyClick = (company) => {
-    // TODO: Show edit company form
-  };
-
   render() {
     return (
       <Grid>
@@ -95,13 +92,6 @@ class ProfilePage extends Component {
           <Row>
             <Col xs={12} md={4}>
               <SidebarLinks links={this.sidebarLinks} />
-              {this.state.userCompanies.length > 0 && (
-                <ListItems
-                  onItemClick={this.onCompanyClick}
-                  items={this.state.userCompanies}
-                  listTitle="Your companies"
-                />
-              )}
             </Col>
             <Col xs={12} md={8}>
               <Route
@@ -116,8 +106,28 @@ class ProfilePage extends Component {
               />
               <Route
                 exact
-                path={`${this.match.url}/create-company`}
+                path={`${this.match.url}/companies`}
                 render={() => (
+                  <Companies
+                    companies={this.state.userCompanies}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={`${this.match.url}/company/:id`}
+                render={({match}) => (
+                  <Company
+                    userId={this.state.profile.userId}
+                    handleSubmit={this.onCompanyAdd}
+                    companyId={match.params.id}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path={`${this.match.url}/company/`}
+                render={({match}) => (
                   <CreateCompanyForm
                     userId={this.state.profile.userId}
                     handleSubmit={this.onCompanyAdd}

@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     resources :companies, expect: [:edit]
 
     post '/profiles/:id/create_company', to: 'profiles#create_company'
+
+    namespace :user do
+      resources :companies, only: [:show]
+    end
   end
 end

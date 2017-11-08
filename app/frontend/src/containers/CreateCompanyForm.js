@@ -10,14 +10,22 @@ import Auth from 'Auth';
 import Config from 'config';
 
 const CreateCompanyForm = withFormik({
-  mapPropsToValues: (props) => ({
-    title: '',
-    ownershipTypeId: '1',
-    companyTypeId: '1',
-    status: 0,
-    userStatus: '',
-    is_sole: false
-  }),
+  mapPropsToValues: (props) => {
+    let company = {};
+    if(props.company) {
+      company = props.company
+    } else {
+      company = {
+        title: '',
+        ownershipTypeId: '1',
+        companyTypeId: '1',
+        status: 0,
+        userStatus: '',
+        is_sole: false
+      }
+    }
+    return company;
+  },
 
   validationSchema: Yup.object().shape({
     title: Yup.string()
@@ -115,7 +123,11 @@ const CreateCompanyForm = withFormik({
       </Checkbox>
 
       <Button type="submit" disabled={isSubmitting}>
-        Create
+        { self.props.company ? 'Create' : 'Update' }
+      </Button>
+
+      <Button>
+        Destroy
       </Button>
     </Form>
   );

@@ -1,0 +1,1 @@
+json.array! @static_pages, partial: 'static_pages/show', as: :static_page

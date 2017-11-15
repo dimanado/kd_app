@@ -23,8 +23,7 @@ export default class Api {
       method: 'get',
       url: `/api/profiles/${id}`,
       headers: userTokens
-    })
-    .then(({ data }) => convertObjectKeys(data, toCamelCase));
+    }).then(({ data }) => convertObjectKeys(data, toCamelCase));
   }
 
   static profileUpdate(id, profile, userTokens) {
@@ -38,7 +37,7 @@ export default class Api {
 
   static createCompany(profileId, company, userTokens) {
     return axios({
-      method: 'POST',
+      method: 'post',
       url: `/api/profiles/${profileId}/create_company`,
       headers: userTokens,
       data: { company: convertObjectKeys(company, toSnakeCase) }
@@ -50,6 +49,6 @@ export default class Api {
       method: 'get',
       url: `/api/user/companies/${companyId}`,
       headers: userTokens
-    });
+    }).then(({ data }) => convertObjectKeys(data, toCamelCase));
   }
 }

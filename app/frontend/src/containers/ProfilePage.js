@@ -5,11 +5,11 @@ import MDSpinner from 'react-md-spinner';
 import Auth from 'Auth';
 import User from 'User';
 import Api from 'Api';
-import CreateCompanyForm from 'CreateCompanyForm';
+import CompanyForm from 'CompanyForm';
 import SidebarLinks from 'SidebarLinks';
 import EditProfile from 'EditProfile';
-import Companies from 'profile/Companies'
-import Company from 'profile/Company'
+import CompaniesList from 'CompaniesList';
+import Company from 'Company';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -108,7 +108,7 @@ class ProfilePage extends Component {
                 exact
                 path={`${this.match.url}/companies`}
                 render={() => (
-                  <Companies
+                  <CompaniesList
                     companies={this.state.userCompanies}
                   />
                 )}
@@ -128,7 +128,7 @@ class ProfilePage extends Component {
                 exact
                 path={`${this.match.url}/company/`}
                 render={({match}) => (
-                  <CreateCompanyForm
+                  <CompanyForm
                     userId={this.state.profile.userId}
                     handleSubmit={this.onCompanyAdd}
                   />

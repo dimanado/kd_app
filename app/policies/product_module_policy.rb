@@ -1,0 +1,2 @@
+class ProductModulePolicy < ApplicationPolicy
+end

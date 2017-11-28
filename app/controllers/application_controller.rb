@@ -2,6 +2,11 @@ class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
 
+  before_action :authenticate_user!
+
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
   rescue_from ActionController::ParameterMissing, with: :invalid_params
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

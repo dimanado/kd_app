@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   scope :api do
     mount_devise_token_auth_for 'User', at: 'auth'
-    resources :profiles, only: [:show, :update]
 
-    resources :companies, expect: [:edit]
+    resources :profiles, only: [:show, :update] do
+      post :create_company
+    end
 
-    post '/profiles/:id/create_company', to: 'profiles#create_company'
+    resources :companies, except: [:edit]
+
+    resources :authors
+    resources :lessons
+    resources :product_modules
+    resources :products
   end
 end

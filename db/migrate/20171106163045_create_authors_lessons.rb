@@ -1,5 +1,5 @@
 class CreateAuthorsLessons < ActiveRecord::Migration[5.1]
   def change
-    create_join_table :authors, :lessons
+    create_join_table :authors, :articles
   end
 end

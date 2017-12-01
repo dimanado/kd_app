@@ -1,0 +1,2 @@
+class MagazinePolicy < ApplicationPolicy
+end

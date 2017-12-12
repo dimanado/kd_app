@@ -16,6 +16,8 @@ gem 'pundit'
 gem 'rails', '5.1.4'
 gem 'carrierwave-base64'
 gem 'config'
+gem 'activeadmin'
+gem 'inherited_resources'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

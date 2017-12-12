@@ -83,3 +83,4 @@ root_service_kind = ServiceKind.find_or_create_by!(name: "ЗОЖ", description: 
 SERVICE_KINDS.each do |service_kind|
   create_service_kind(service_kind, root_service_kind)
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

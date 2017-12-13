@@ -20,6 +20,10 @@ class Company < ApplicationRecord
   validates :title, uniqueness: true
   validates :title, :ownership_type, :company_type, :status, presence: true
 
+  def get_integer_status
+    Company.statuses[status]
+  end
+
   def self.create_company(company_params, current_user, status)
     company = nil
     transaction do
@@ -27,5 +31,11 @@ class Company < ApplicationRecord
       CompanyRepresentative.create(status: status, user: current_user, company: company)
     end
     company
+  end
+
+  def update_with_representative(company_params, current_user, status)
+    if update(company_params)
+      company_representatives.find_by(user_id: current_user.id).update(status: status)
+    end
   end
 end

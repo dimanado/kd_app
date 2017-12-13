@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show, :update]
 
     resources :authors
-    resources :lessons
-    resources :product_modules
-    resources :products
+
+    resources :magazines do
+      resources :editions do
+        resources :articles
+      end
+    end
   end
 end

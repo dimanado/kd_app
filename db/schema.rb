@@ -10,13 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928111139) do
+ActiveRecord::Schema.define(version: 20171201212826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "articles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "annotation"
+    t.text "content"
+    t.bigint "edition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_articles_on_edition_id"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authors_lessons", id: false, force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "lesson_id", null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "editions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "magazine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["magazine_id"], name: "index_editions_on_magazine_id"
+  end
+
+  create_table "editions_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "edition_id", null: false
+  end
+
+  create_table "magazines", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

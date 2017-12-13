@@ -15,6 +15,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    
+  end
+
   def create_company
     @company = Company.create_company(company_params, current_user, params[:company][:user_status])
     render_error_messages(@company) unless @company.valid?

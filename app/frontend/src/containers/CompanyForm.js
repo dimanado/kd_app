@@ -29,25 +29,40 @@ const CompanyForm = props => {
           title: Yup.string().required('Title is required'),
           userStatus: Yup.string().required(
             'You Status in Company is required'
-          ),
-          status: Yup.string().required('Status is required')
+          )
         })}
         onSubmit={(values, { setSubmitting, setErrors }) => {
           values.status = parseInt(values.status, 10);
+          if(values.id) {
+            console.log(values.id)
+            Api.updateCompany(values, Auth.getUserTokens())
+              .then(({ data, headers }) => {
+                setSubmitting(false);
 
-          Api.createCompany(props.userId, values, Auth.getUserTokens())
-            .then(({ data, headers }) => {
-              setSubmitting(false);
+                props.handleSubmit(data);
+              })
+              .catch(({ response }) => {
+                setSubmitting(false);
 
-              props.handleSubmit(data);
-            })
-            .catch(({ response }) => {
-              setSubmitting(false);
+                if (response) {
+                  setErrors(response.data.errors);
+                }
+              });
+          } else {
+            Api.createCompany(props.userId, values, Auth.getUserTokens())
+              .then(({ data, headers }) => {
+                setSubmitting(false);
 
-              if (response) {
-                setErrors(response.data.errors);
-              }
-            });
+                props.handleSubmit(data);
+              })
+              .catch(({ response }) => {
+                setSubmitting(false);
+
+                if (response) {
+                  setErrors(response.data.errors);
+                }
+              });
+          }
         }}
         component={CompanyFormFields}
       />

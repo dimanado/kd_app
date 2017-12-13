@@ -44,6 +44,15 @@ export default class Api {
     });
   }
 
+  static updateCompany(company, userTokens) {
+    return axios({
+      method: 'put',
+      url: `/api/user/companies/${company.id}`,
+      headers: userTokens,
+      data: { company: convertObjectKeys(company, toSnakeCase) }
+    })
+  }
+
   static showCompany(companyId, userTokens) {
     return axios({
       method: 'get',

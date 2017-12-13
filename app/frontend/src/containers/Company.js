@@ -22,7 +22,7 @@ class Company extends Component {
       const company = Object.assign({}, data, {
         ownershipTypeId: data.ownershipType.id,
         companyTypeId: data.companyType.id,
-        userStatus: ''
+        userStatus: data.userStatus
       });
 
       this.setState({ company, spinner: false });
